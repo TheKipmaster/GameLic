@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @narrative.title %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @narrative.author %>
+</p>
+
+<p>
+  <strong>Story:</strong>
+  <%= @narrative.story %>
+</p>
+
+<%= link_to 'Edit', edit_narrative_path(@narrative) %> |
+<%= link_to 'Back', narratives_path %>
