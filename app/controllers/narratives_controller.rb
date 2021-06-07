@@ -1,5 +1,6 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
 
   # GET /narratives or /narratives.json
   def index

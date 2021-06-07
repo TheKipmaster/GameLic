@@ -11,6 +11,8 @@ gem 'pg'
 gem 'puma', '~> 4.1'
 # Use Devise for user authentication and registration
 gem 'devise'
+# Use CanCanCan for authorization
+gem 'cancancan'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
