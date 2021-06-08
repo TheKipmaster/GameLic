@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :narratives
+  resources :narratives do
+    collection do
+      patch :open_registration
+    end
+  end
   # resources :users
 
   root to: 'welcome#index'

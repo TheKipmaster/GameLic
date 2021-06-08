@@ -7,6 +7,12 @@ class NarrativesController < ApplicationController
     @narratives = Narrative.all
   end
 
+  def open_registration
+    Narrative.toggle_open
+
+    redirect_back(fallback_location: narratives_path)
+  end
+
   # GET /narratives/1 or /narratives/1.json
   def show
   end

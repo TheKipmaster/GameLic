@@ -8,6 +8,7 @@
       <th>Title</th>
       <th>Author</th>
       <th>Story</th>
+      <th>Open</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= narrative.title %></td>
         <td><%= narrative.author %></td>
         <td><%= narrative.story %></td>
+        <td><%= narrative.open %></td>
         <td><%= link_to 'Show', narrative %></td>
         <td><%= link_to 'Edit', edit_narrative_path(narrative) %></td>
         <td><%= link_to 'Destroy', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -25,6 +27,14 @@
     <% end %>
   </tbody>
 </table>
+
+<% if can? :manage, Narrative %>
+  <% if Narrative.open? %>
+    <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %>
+  <% else %>
+    <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %>
+  <% end %>
+<% end %>
 
 <br>
 
