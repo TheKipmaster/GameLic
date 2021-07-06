@@ -1,5 +1,6 @@
 
 <%= link_to "Narrativas", narratives_path %><br />
+<%= link_to "Chat", chat_index_path %><br />
 <% if current_user %>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %><br />
 <% else %>
