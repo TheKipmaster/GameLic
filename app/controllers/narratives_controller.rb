@@ -71,6 +71,6 @@ class NarrativesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def narrative_params
-      params.require(:narrative).permit(:title, :author, :story)
+      params.require(:narrative).permit(:title, :size, :description)
     end
 end

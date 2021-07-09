@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_07_224341) do
+ActiveRecord::Schema.define(version: 2021_07_08_213308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "narratives", force: :cascade do |t|
     t.string "title"
-    t.string "author"
-    t.string "story"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "open", default: false
+    t.text "description"
+    t.integer "size"
   end
 
   create_table "users", force: :cascade do |t|
