@@ -17,7 +17,7 @@
     <% @narratives.each do |narrative| %>
       <tr>
         <td><%= narrative.title %></td>
-        <td><%= narrative.users.length %> / <%= narrative.size %></td>
+        <td><%= narrative.students.length %> / <%= narrative.size %></td>
         <td><%= narrative.description %></td>
         <td><%= narrative.open %></td>
         <td><%= link_to 'Show', narrative %></td>

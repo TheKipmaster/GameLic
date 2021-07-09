@@ -20,6 +20,12 @@ class NarrativesController < ApplicationController
   # GET /narratives/new
   def new
     @narrative = Narrative.new
+    narrators = User.where(type: "Narrator")
+    @narrators = []
+
+    narrators.each do |narrator|
+      @narrators.append([narrator.name, narrator.id])
+    end
   end
 
   # GET /narratives/1/edit
@@ -71,6 +77,6 @@ class NarrativesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def narrative_params
-      params.require(:narrative).permit(:title, :size, :description)
+      params.require(:narrative).permit(:title, :size, :description, :user_id)
     end
 end

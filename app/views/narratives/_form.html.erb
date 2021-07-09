@@ -12,18 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :título %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :size %>
+    <%= form.label :tamanho %>
     <%= form.number_field :size %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
+    <%= form.label :descrição %>
     <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :narrador %>
+    <%= form.select(:user_id, @narrators) %>
   </div>
 
   <div class="actions">
