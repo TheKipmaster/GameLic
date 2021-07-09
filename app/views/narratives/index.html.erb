@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Título</th>
-      <th>Tamanho</th>
+      <th>Número de Jogadores</th>
       <th>Descrição</th>
       <th>Aberta</th>
       <th colspan="3"></th>
@@ -17,7 +17,7 @@
     <% @narratives.each do |narrative| %>
       <tr>
         <td><%= narrative.title %></td>
-        <td><%= narrative.size %></td>
+        <td><%= narrative.users.length %> / <%= narrative.size %></td>
         <td><%= narrative.description %></td>
         <td><%= narrative.open %></td>
         <td><%= link_to 'Show', narrative %></td>
@@ -29,14 +29,17 @@
 </table>
 
 <% if can? :manage, Narrative %>
-  <% if Narrative.first.nil? %> <%# If no narratives present in database, then show no link %>
+  <% if Narrative.first.nil? %>
+    <%# If no narratives present in database, then show no link %>
   <% elsif Narrative.open? %>
-    <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %>
+    <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
   <% else %>
-    <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %>
+    <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
   <% end %>
 <% end %>
 
-<br>
+<% if can? :manage, Narrative %>
+  <%= link_to 'New Narrative', new_narrative_path %> <br>
+<% end %>
 
-<%= link_to 'New Narrative', new_narrative_path %>
+<%= link_to 'Home', root_path %>
