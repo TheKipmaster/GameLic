@@ -4,7 +4,9 @@ Rails.application.routes.draw do
       patch :open_registration
     end
   end
-  # resources :users
+
+  get 'users', to: 'users#index'
+  patch 'users/choose_narrative/:narrative_id', to: 'users#choose_narrative'
 
   root to: 'welcome#index'
 

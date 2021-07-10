@@ -20,5 +20,6 @@
   <%= @narrative.size %>
 </p>
 
+<%= link_to 'Escolher essa narrativa', "/users/choose_narrative/#{@narrative.id}", method: :patch %> <br>
 <%= link_to 'Edit', edit_narrative_path(@narrative) %> |
 <%= link_to 'Back', narratives_path %>
