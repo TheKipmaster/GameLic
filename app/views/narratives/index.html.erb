@@ -20,9 +20,9 @@
         <td><%= narrative.students.length %> / <%= narrative.size %></td>
         <td><%= narrative.description %></td>
         <td><%= narrative.open %></td>
-        <td><%= link_to 'Show', narrative %></td>
-        <td><%= link_to 'Edit', edit_narrative_path(narrative) %></td>
-        <td><%= link_to 'Destroy', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', narrative %></td>
+        <td><%= link_to 'Editar', edit_narrative_path(narrative) %></td>
+        <td><%= link_to 'Deletar', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -39,7 +39,7 @@
 <% end %>
 
 <% if can? :manage, Narrative %>
-  <%= link_to 'New Narrative', new_narrative_path %> <br>
+  <%= link_to 'Nova Narrativa', new_narrative_path %> <br>
 <% end %>
 
-<%= link_to 'Home', root_path %>
+<%= link_to 'Início', root_path %>
