@@ -1,5 +1,6 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
+  before_action :set_narrators, only: %i[ new edit ]
   load_and_authorize_resource
 
   # GET /narratives or /narratives.json
@@ -20,12 +21,6 @@ class NarrativesController < ApplicationController
   # GET /narratives/new
   def new
     @narrative = Narrative.new
-    narrators = User.where(type: "Narrator")
-    @narrators = []
-
-    narrators.each do |narrator|
-      @narrators.append([narrator.name, narrator.id])
-    end
   end
 
   # GET /narratives/1/edit
@@ -73,6 +68,15 @@ class NarrativesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_narrative
       @narrative = Narrative.find(params[:id])
+    end
+
+    def set_narrators
+      narrators = User.where(type: "Narrator")
+      @narrators = []
+
+      narrators.each do |narrator|
+        @narrators.append([narrator.name, narrator.id])
+      end
     end
 
     # Only allow a list of trusted parameters through.
