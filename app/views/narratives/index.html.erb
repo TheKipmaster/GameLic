@@ -21,8 +21,10 @@
         <td><%= narrative.description %></td>
         <td><%= narrative.open %></td>
         <td><%= link_to 'Visualizar', narrative %></td>
-        <td><%= link_to 'Editar', edit_narrative_path(narrative) %></td>
-        <td><%= link_to 'Deletar', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :manage, Narrative %>
+          <td><%= link_to 'Editar', edit_narrative_path(narrative) %></td>
+          <td><%= link_to 'Deletar', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
