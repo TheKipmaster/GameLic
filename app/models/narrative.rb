@@ -11,4 +11,8 @@ class Narrative < ApplicationRecord
     self.update_all(open: !self.open?)
   end
 
+  def full?
+    size == students.length
+  end
+
 end

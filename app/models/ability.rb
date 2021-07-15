@@ -10,8 +10,9 @@ class Ability
 
     if user.narrator?
       can :manage, :all
+      cannot :choose_narrative, Narrative
     elsif user.student?
-      can :read, Narrative, open: true
+      can [:read, :choose_narrative], Narrative, open: true
     end
 
     # The first argument to `can` is the action you are giving the user

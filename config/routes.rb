@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'users', to: 'users#index'
-  patch 'users/choose_narrative/:narrative_id', to: 'users#choose_narrative'
+  get 'students', to: 'students#index'
+  patch 'students/choose_narrative/:narrative_id', to: 'students#choose_narrative'
 
   root to: 'welcome#index'
 
