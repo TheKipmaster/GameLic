@@ -71,7 +71,7 @@ class NarrativesController < ApplicationController
     end
 
     def set_narrators
-      narrators = User.where(type: "Narrator")
+      narrators = Narrator.all
       @narrators = []
 
       narrators.each do |narrator|

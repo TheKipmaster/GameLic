@@ -28,7 +28,7 @@
 </ul>
 
 <% if can? :choose_narrative, @narrative %>
-  <%= link_to 'Escolher essa narrativa', "/students/choose_narrative/#{@narrative.id}", method: :patch %> <br>
+  <%= link_to 'Escolher essa narrativa', "/users/choose_narrative/#{@narrative.id}", method: :patch %> <br>
 <% end %>
 <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
 <%= link_to 'Voltar', narratives_path %>

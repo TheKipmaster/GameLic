@@ -1,2 +1,19 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Index</h1>
+
+<% @narratives.each do |narrative| %>
+
+  <h2><%= narrative.title %> | <%= narrative.students.length %> / <%= narrative.size %></h2>
+  <h3>Narrador: <%= narrative.narrator.name %></h3>
+
+  <ul>
+    <% narrative.students.each do |student| %>
+      <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
+    <% end %>
+    <% if !narrative.full? %>
+      <% for i in 1..(narrative.size - narrative.students.length) %>
+        <li></li>
+      <% end %>
+    <% end %>
+  </ul>
+
+<% end %>
