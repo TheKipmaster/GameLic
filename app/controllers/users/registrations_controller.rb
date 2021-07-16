@@ -11,7 +11,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    params[:user] = params[:user]&.merge(type: 'Student')
     super
   end
 
