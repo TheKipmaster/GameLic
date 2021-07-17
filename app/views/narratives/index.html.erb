@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Foto</th>
       <th>Título</th>
       <th>Número de Jogadores</th>
       <th>Descrição</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @narratives.each do |narrative| %>
       <tr>
+        <td><%= image_tag(narrative.avatar, style:"width: 30px; height:30px;")%></td> 
         <td><%= narrative.title %></td>
         <td><%= narrative.students.length %> / <%= narrative.size %></td>
         <td><%= narrative.description %></td>

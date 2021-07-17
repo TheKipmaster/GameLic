@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Imagem Tema:</strong>
+  <%= image_tag(@narrative.avatar, style:"width: 30px; height:30px;")%>
+</p>
+
+<p>
   <strong>Título:</strong>
   <%= @narrative.title %>
 </p>
