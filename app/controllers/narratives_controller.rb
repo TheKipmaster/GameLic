@@ -1,6 +1,6 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
-  before_action :set_narrators, only: %i[ new edit ]
+  before_action :set_narrators, only: %i[ new edit create ]
   load_and_authorize_resource
 
   # GET /narratives or /narratives.json
@@ -71,7 +71,7 @@ class NarrativesController < ApplicationController
     end
 
     def set_narrators
-      narrators = User.where(type: "Narrator")
+      narrators = Narrator.all
       @narrators = []
 
       narrators.each do |narrator|

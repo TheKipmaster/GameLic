@@ -55,6 +55,8 @@ group :test do
   gem 'webdrivers'
   # Gem for cleaning database after tests
   gem 'database_cleaner'
+  # Gem for analysing code coverage
+  gem 'simplecov', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

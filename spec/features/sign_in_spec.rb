@@ -9,7 +9,7 @@ feature "Signing in" do
       fill_in "Email", with: "user@example.com"
       fill_in "Senha", with: "caplin"
     end
-    click_button "Log in"
+    click_button "Entrar"
     expect(page).to have_content "Signed in successfully"
   end
 
@@ -21,7 +21,7 @@ feature "Signing in" do
       fill_in "Email", with: other_user.email
       fill_in "Senha", with: other_user.password
     end
-    click_button "Log in"
+    click_button "Entrar"
     expect(page).to have_content "Invalid Email or password"
   end
 end
