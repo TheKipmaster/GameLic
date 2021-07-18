@@ -1,6 +1,6 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
-  before_action :set_narrators, only: %i[ new edit create ]
+  before_action :set_narrators, only: %i[ new edit create update ]
   load_and_authorize_resource
 
   # GET /narratives or /narratives.json

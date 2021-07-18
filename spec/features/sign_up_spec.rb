@@ -16,6 +16,6 @@ feature "Signing up" do
       fill_in "Confirmar Senha", with: "123456"
     end
     click_button "Cadastrar-se"
-    expect(page).to have_content "You have signed up successfully"
+    expect(page).to have_content "A message with a confirmation link has been sent to your email address"
   end
 end
