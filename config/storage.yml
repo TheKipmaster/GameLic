@@ -8,8 +8,8 @@ local:
 
 amazon:
   service: S3
-  access_key_id: 'AKIA2MWQ5LXS3PQDGM52'
-  secret_access_key: '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'
+  access_key_id: <%= ENV['S3_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['S3_SECRET_KEY'] %>
   region: 'us-east-2'
   bucket: 'gamelic'
 
