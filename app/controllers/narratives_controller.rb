@@ -57,6 +57,7 @@ class NarrativesController < ApplicationController
 
   # DELETE /narratives/1 or /narratives/1.json
   def destroy
+    @narrative.students.delete(@narrative.students)
     @narrative.destroy
     respond_to do |format|
       format.html { redirect_to narratives_url, notice: "Narrative was successfully destroyed." }
