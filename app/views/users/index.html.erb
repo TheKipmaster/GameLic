@@ -17,3 +17,10 @@
   </ul>
 
 <% end %>
+
+<h2>Alunos sem narrativa</h2>
+<ul>
+  <% @remaining_students.each do |student| %>
+    <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
+  <% end %>
+</ul>

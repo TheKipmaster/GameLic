@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @narratives = Narrative.all
+    @remaining_students = Student.where(narrative_id: nil)
   end
 
   def choose_narrative
