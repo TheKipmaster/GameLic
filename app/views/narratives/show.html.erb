@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag(@narrative.avatar) %>
+<% if @narrative.avatar.attached? %>
+  <%= image_tag(@narrative.avatar) %>
+<% end %>
 
 <p>
   <strong>Título:</strong>
