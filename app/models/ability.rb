@@ -8,6 +8,7 @@ class Ability
 
     user ||= User.new # guest user (not logged in)
 
+    cannot :manage, :all
     if user.narrator?
       can :manage, :all
       cannot :choose_narrative, Narrative
