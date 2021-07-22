@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
+  # @TODO: método de promover e des-promover usuários. também deve remover as narrativas associadas
+
   def student?
     type == 'Student'
   end

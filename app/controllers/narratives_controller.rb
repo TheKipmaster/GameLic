@@ -6,7 +6,7 @@ class NarrativesController < ApplicationController
   # GET /narratives or /narratives.json
   def index
     @narratives = Narrative.all
-    authorize! :manage, Narrative # @TODO: why do I need this? "load_and_authorize_resource" should be enough
+    authorize! :read, Narrative # @TODO: why do I need this? "load_and_authorize_resource" should be enough
   end
 
   def open_registration
