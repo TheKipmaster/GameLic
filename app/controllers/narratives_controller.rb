@@ -1,5 +1,6 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
+  before_action :set_narrators, only: %i[ new edit ]
   load_and_authorize_resource
 
   # GET /narratives or /narratives.json
@@ -69,8 +70,17 @@ class NarrativesController < ApplicationController
       @narrative = Narrative.find(params[:id])
     end
 
+    def set_narrators
+      narrators = User.where(type: "Narrator")
+      @narrators = []
+
+      narrators.each do |narrator|
+        @narrators.append([narrator.name, narrator.id])
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def narrative_params
-      params.require(:narrative).permit(:title, :author, :story)
+      params.require(:narrative).permit(:title, :size, :description, :avatar, :user_id)
     end
 end

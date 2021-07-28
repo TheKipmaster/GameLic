@@ -1,19 +1,30 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Imagem Tema:</strong>
+  <%= image_tag(@narrative.avatar, style:"width: 30px; height:30px;")%>
+</p>
+
+<p>
+  <strong>Título:</strong>
   <%= @narrative.title %>
 </p>
 
 <p>
-  <strong>Author:</strong>
-  <%= @narrative.author %>
+  <strong>Narrador:</strong>
+  <%= @narrative.narrator.name %>
 </p>
 
 <p>
-  <strong>Story:</strong>
-  <%= @narrative.story %>
+  <strong>Descrição:</strong>
+  <%= @narrative.description %>
 </p>
 
-<%= link_to 'Edit', edit_narrative_path(@narrative) %> |
-<%= link_to 'Back', narratives_path %>
+<p>
+  <strong>Número de Jogadores:</strong>
+  <%= @narrative.size %>
+</p>
+
+<%= link_to 'Escolher essa narrativa', "/users/choose_narrative/#{@narrative.id}", method: :patch %> <br>
+<%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+<%= link_to 'Voltar', narratives_path %>

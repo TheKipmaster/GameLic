@@ -12,18 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :título %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :author %>
-    <%= form.text_field :author %>
+    <%= form.label :tamanho %>
+    <%= form.number_field :size %>
   </div>
 
   <div class="field">
-    <%= form.label :story %>
-    <%= form.text_field :story %>
+    <%= form.label :descrição %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :avatar %>
+    <%= form.file_field :avatar, direct_upload: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :narrador %>
+    <%= form.select(:user_id, @narrators) %>
   </div>
 
   <div class="actions">

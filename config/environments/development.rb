@@ -29,7 +29,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # configure mailer for devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
@@ -66,5 +66,20 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
+<<<<<<< HEAD
 
+=======
+  
+  ##SENDGRID
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+  #   :password => '<SENDGRID_API_KEY>', # This is the secret sendgrid API key which was issued during API key creation
+  #   :domain => 'yourdomain.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+>>>>>>> origin/Mail_Narrative
 end

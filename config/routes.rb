@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       patch :open_registration
     end
   end
+<<<<<<< HEAD
   
   resources :conversations, only: [:create] do
     member do
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
   end
   # resources :users
   # root 'chat#index'
+=======
+
+  get 'users', to: 'users#index'
+  patch 'users/choose_narrative/:narrative_id', to: 'users#choose_narrative'
+
+>>>>>>> origin/Mail_Narrative
   root to: 'welcome#index'
 
   devise_for :users, controllers: {
