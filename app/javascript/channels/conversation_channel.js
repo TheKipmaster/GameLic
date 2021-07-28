@@ -5,7 +5,7 @@ consumer.subscriptions.create("ConversationChannel", {
     // Called when the subscription is ready for use on the server
   },
 
-  disconnected() {
+  disconnected() {  
     // Called when the subscription has been terminated by the server
   },
 
@@ -40,6 +40,7 @@ consumer.subscriptions.create("ConversationChannel", {
   },
 
   speak(message) {
+    console.log(message)
     return this.perform('speak', {
       message: message
     });
