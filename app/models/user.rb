@@ -10,6 +10,8 @@ class User < ApplicationRecord
 =======
 >>>>>>> origin/Mail_Narrative
 
+  # @TODO: método de promover e des-promover usuários. também deve remover as narrativas associadas
+
   def student?
     type == 'Student'
   end

@@ -33,6 +33,9 @@ Rails.application.configure do
 
   # configure mailer for devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_options = { from: ENV['SENDMAIL_USERNAME'] }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -63,6 +66,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+<<<<<<< HEAD
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
   config.action_mailer.raise_delivery_errors = false
@@ -70,6 +74,8 @@ Rails.application.configure do
 
 =======
   
+=======
+>>>>>>> Mail_Narrative
   ##SENDGRID
   # config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {

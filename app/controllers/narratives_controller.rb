@@ -1,11 +1,12 @@
 class NarrativesController < ApplicationController
   before_action :set_narrative, only: %i[ show edit update destroy ]
-  before_action :set_narrators, only: %i[ new edit ]
+  before_action :set_narrators, only: %i[ new edit create update ]
   load_and_authorize_resource
 
   # GET /narratives or /narratives.json
   def index
     @narratives = Narrative.all
+    authorize! :read, Narrative # @TODO: why do I need this? "load_and_authorize_resource" should be enough
   end
 
   def open_registration
@@ -57,6 +58,7 @@ class NarrativesController < ApplicationController
 
   # DELETE /narratives/1 or /narratives/1.json
   def destroy
+    @narrative.students.delete(@narrative.students)
     @narrative.destroy
     respond_to do |format|
       format.html { redirect_to narratives_url, notice: "Narrative was successfully destroyed." }
@@ -71,7 +73,7 @@ class NarrativesController < ApplicationController
     end
 
     def set_narrators
-      narrators = User.where(type: "Narrator")
+      narrators = Narrator.all
       @narrators = []
 
       narrators.each do |narrator|

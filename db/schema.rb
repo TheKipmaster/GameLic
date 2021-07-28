@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_07_17_021157) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "type"
+    t.string "type", default: "Student"
     t.bigint "narrative_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["narrative_id"], name: "index_users_on_narrative_id"
