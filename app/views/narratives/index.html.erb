@@ -1,53 +1,55 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Narratives</h1>
+<div class="main" id="narratives-index">
 
-<table>
-  <thead>
-    <tr>
-      <th>Foto</th>
-      <th>Título</th>
-      <th>Número de Jogadores</th>
-      <th>Descrição</th>
-      <th>Aberta</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="narratives-header">
+    <h1>CAMPANHAS</h1>
 
-  <tbody>
-    <% @narratives.each do |narrative| %>
-      <tr>
-        <td>
-          <% if narrative.avatar.attached? %>
-            <%= image_tag(narrative.avatar, style:"width: 30px; height:30px;")%>
-          <% end %>
-        </td>
-        <td><%= narrative.title %></td>
-        <td><%= narrative.students.length %> / <%= narrative.size %></td>
-        <td><%= narrative.description %></td>
-        <td><%= narrative.open %></td>
-        <td><%= link_to 'Visualizar', narrative %></td>
-        <% if can? :manage, Narrative %>
-          <td><%= link_to 'Editar', edit_narrative_path(narrative) %></td>
-          <td><%= link_to 'Deletar', narrative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+    <% if can? :manage, Narrative %>
+      <div class="links">
+        <%= link_to 'Lista de Inscritos', users_path %>
+        <%= link_to 'Criar Nova Campanha', new_narrative_path %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<% if can? :manage, Narrative %>
-  <% if Narrative.first.nil? %>
-    <%# If no narratives present in database, then show no link %>
-  <% elsif Narrative.open? %>
-    <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
-  <% else %>
-    <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
+    <div class="narratives-container">
+      <% @narratives.each do |narrative| %>
+        <a href="<%= narrative_path(narrative) %>" class="narrative-card">
+
+          <% if narrative.avatar.attached? %>
+            <%= image_tag(narrative.avatar)%>
+          <% end %>
+          <h2>
+            <%= narrative.title %>
+          </h2>
+          <%= truncate(narrative.description, length: 200) %>
+
+          <div class="narrative-card-footer">
+            <% if narrative.open %>
+              <span>Há vagas</span>
+            <% else %>
+              <img src="<%= image_url('Lock.svg') %>" alt="">
+            <% end %>
+            <span>
+              <%= narrative.students.length %> / <%= narrative.size %> <br>
+              Inscritos
+            </span>
+          </div>
+        </a>
+      <% end %>
+    </div>
+
+  <% if can? :manage, Narrative %>
+    <% if Narrative.first.nil? %>
+      <%# If no narratives present in database, then show no link %>
+    <% elsif Narrative.open? %>
+      <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
+    <% else %>
+      <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
+    <% end %>
   <% end %>
-<% end %>
 
-<% if can? :manage, Narrative %>
-  <%= link_to 'Nova Narrativa', new_narrative_path %> <br>
-<% end %>
+  <%= link_to 'Início', root_path %>
 
-<%= link_to 'Início', root_path %>
+</div>
