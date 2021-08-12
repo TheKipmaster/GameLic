@@ -1,0 +1,20 @@
+<nav>
+  <div class="content">
+    <a href="<%= root_path %>">
+      <img src="<%= image_url('Logo.svg') %>" >
+    </a>
+
+    <div class="site-actions">
+      <%= link_to 'Minha Conta', users_path %>
+      <%= link_to 'Campanhas', narratives_path %>
+      <%= link_to 'Fórum', root_path %>
+      <%= link_to 'Midioteca', root_path %>
+    </div>
+
+    <div class="user-actions">
+      <%= link_to 'Mensagens', root_path %>
+      <%= link_to 'Notificações', root_path %>
+      <%= link_to 'Perfil', root_path %>
+    </div>
+  </div>
+</nav>
