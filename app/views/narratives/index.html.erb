@@ -7,8 +7,15 @@
 
     <% if can? :manage, Narrative %>
       <div class="links">
-        <%= link_to 'Lista de Inscritos', users_path %>
-        <%= link_to 'Criar Nova Campanha', new_narrative_path %>
+        <a href="<%= users_path %>">
+          <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+          <span>Lista de Inscritos</span>
+        </a>
+
+        <a href="<%= new_narrative_path %>">
+          <img src="<%= image_url('Espada.svg') %>" alt="">
+          <span>Criar Nova Campanha</span>
+        </a>
       </div>
     <% end %>
   </div>
@@ -23,7 +30,9 @@
           <h2>
             <%= narrative.title %>
           </h2>
-          <%= truncate(narrative.description, length: 200) %>
+          <p>
+            <%= truncate(narrative.description, length: 130) %>
+          </p>
 
           <div class="narrative-card-footer">
             <% if narrative.open %>
@@ -32,7 +41,9 @@
               <img src="<%= image_url('Lock.svg') %>" alt="">
             <% end %>
             <span>
-              <%= narrative.students.length %> / <%= narrative.size %> <br>
+              <b>
+                <%= narrative.students.length %> / <%= narrative.size %> <br>
+              </b>
               Inscritos
             </span>
           </div>
