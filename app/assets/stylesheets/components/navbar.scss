@@ -13,8 +13,33 @@ nav {
     align-items: center;
     width: 80%;
 
+    .site-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        padding: 0 1em;
+
+        span {
+          font-size: $fifteen;
+        }
+
+        img {
+          width: 2.5rem;
+        }
+      }
+    }
+
     a {
       height: 3em;
+      text-decoration: none;
 
       &:hover {
         background-color: transparent;

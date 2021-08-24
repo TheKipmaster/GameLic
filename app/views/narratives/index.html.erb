@@ -20,36 +20,36 @@
     <% end %>
   </div>
 
-    <div class="narratives-container">
-      <% @narratives.each do |narrative| %>
-        <a href="<%= narrative_path(narrative) %>" class="narrative-card">
+  <div class="narratives-container">
+    <% @narratives.each do |narrative| %>
+      <a href="<%= narrative_path(narrative) %>" class="narrative-card">
 
-          <% if narrative.avatar.attached? %>
-            <%= image_tag(narrative.avatar)%>
+        <% if narrative.avatar.attached? %>
+          <%= image_tag(narrative.avatar)%>
+        <% end %>
+        <h2>
+          <%= narrative.title %>
+        </h2>
+        <p>
+          <%= truncate(narrative.description, length: 130) %>
+        </p>
+
+        <div class="narrative-card-footer">
+          <% if narrative.open %>
+            <span>Há vagas</span>
+          <% else %>
+            <img src="<%= image_url('Lock.svg') %>" alt="">
           <% end %>
-          <h2>
-            <%= narrative.title %>
-          </h2>
-          <p>
-            <%= truncate(narrative.description, length: 130) %>
-          </p>
-
-          <div class="narrative-card-footer">
-            <% if narrative.open %>
-              <span>Há vagas</span>
-            <% else %>
-              <img src="<%= image_url('Lock.svg') %>" alt="">
-            <% end %>
-            <span>
-              <b>
-                <%= narrative.students.length %> / <%= narrative.size %> <br>
-              </b>
-              Inscritos
-            </span>
-          </div>
-        </a>
-      <% end %>
-    </div>
+          <span>
+            <b>
+              <%= narrative.students.length %> / <%= narrative.size %> <br>
+            </b>
+            Inscritos
+          </span>
+        </div>
+      </a>
+    <% end %>
+  </div>
 
   <% if can? :manage, Narrative %>
     <% if Narrative.first.nil? %>

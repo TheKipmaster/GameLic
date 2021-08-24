@@ -5,10 +5,22 @@
     </a>
 
     <div class="site-actions">
-      <%= link_to 'Minha Conta', users_path %>
-      <%= link_to 'Campanhas', narratives_path %>
-      <%= link_to 'Fórum', root_path %>
-      <%= link_to 'Midioteca', root_path %>
+      <a href="<%= root_path %>">
+        <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+        <span>Minha Mesa</span>
+      </a>
+      <a href="<%= narratives_path %>">
+        <img src="<%= image_url('Espada.svg') %>" alt="">
+        <span>Campanhas</span>
+      </a>
+      <a href="<%= root_path %>">
+        <img src="<%= image_url('Arquivos.svg') %>" alt="">
+        <span>Fórum</span>
+      </a>
+      <a href="<%= root_path %>">
+        <img src="<%= image_url('Midia.svg') %>" alt="">
+        <span>Midioteca</span>
+      </a>
     </div>
 
     <div class="user-actions">
