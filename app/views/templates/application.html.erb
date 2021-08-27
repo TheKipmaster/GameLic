@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GameLic</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= action_cable_meta_tag %>
+    <style>
+        .body15{
+            min-width:18rem; margin
+            min-height:18rem;
+            background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border: 1px solid #707070;
+            border-radius: 20px 20px 0px 0px;
+            opacity: 1;
+        }
+        .tableMesa{
+            background: var(--unnamed-color-cfcfcf) 0% 0% no-repeat padding-box;
+            background: #CFCFCF 0% 0% no-repeat padding-box;
+            border-radius: 20px;
+            opacity: 1;
+            
+        }
+        .tfontheader{
+            font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-22)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-roboto);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-3d3d3d);
+            text-align: left;
+            font: normal normal bold 22px/27px Roboto;
+            letter-spacing: 0px;
+            color: #3D3D3D;
+            opacity: 1;
+        }
+        .tfontbody{
+            font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-20)/var(--unnamed-line-spacing-26) var(--unnamed-font-family-roboto-slab);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-3d3d3d);
+            text-align: left;
+            font: normal normal normal 20px/26px Roboto Slab;
+            letter-spacing: 0px;
+            color: #3D3D3D;
+            opacity: 1;
+        }
+        
+    </style>
+
+    <style>
+
+        .cabe {
+            top: 154px;
+            left: 321px;
+            height: 250px;
+            background: #ECECEC 0% 0% no-repeat padding-box;
+            border-radius: 24px 24px 0px 0px;
+            opacity: 1;
+        }
+
+        .nomeAluno {
+            font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-22)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-roboto);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-3d3d3d);
+            text-align: left;
+            font: normal normal bold 22px/27px Roboto;
+            letter-spacing: 0px;
+            color: #3D3D3D;
+            opacity: 1;
+        }
+
+        .nomePersonagem {
+            font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-30)/var(--unnamed-line-spacing-39) var(--unnamed-font-family-roboto-slab);
+            letter-spacing: var(--unnamed-character-spacing-0);
+            color: var(--unnamed-color-202020);
+            text-align: left;
+            font: normal normal normal 30px/39px Roboto Slab;
+            letter-spacing: 0px;
+            color: #202020;
+            opacity: 1;
+        }
+
+        .body {
+            top: 154px;
+            left: 321px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
+        }
+
+        .post {
+            border: 3px solid #707070;
+            border-radius: 0px 0px 50px 0px;
+            opacity: 1;
+            /* max-width: 18rem; */
+            max-height: auto;
+        }
+
+        .jogador {
+            border: 3px solid #707070;
+            border-radius: 12px;
+            opacity: 1;
+        }
+
+        body {
+            background-color: #eeeeee;
+        }
+
+        .h7 {
+            font-size: 0.8rem;
+        }
+
+        .avatar {
+            height: 200px;
+            width: 200px;
+            background: #C0C0C0;
+            position: relative;
+        }
+
+        .avatarSub {
+            height: 100px;
+            width: 100px;
+            background: #b43737;
+            position: absolute;
+            right: -25px;
+            bottom: -25px;
+        }
+
+        .gedf-wrapper {
+            margin-top: 0.97rem;
+            background: #4a5568;
+        }
+        
+        @media(max-width: 600px){
+            .gedf-main {
+                padding-left: 0.50rem;
+                padding-right: 0.50rem;
+            }
+
+            .gedf-card {
+                margin-bottom: 1rem;
+            }
+            .tborder{
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        } 
+
+        @media (min-width: 992px) {
+            .gedf-main {
+                padding-left: 0.95rem;
+                padding-right: 0.95rem;
+            }
+
+            .gedf-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .tborder{
+            padding-left: 3rem;
+            padding-right: 3rem;
+            }
+        }
+        }
+
+    </style>
+  </head>
+
+  <body style="background-color:#3D3D3D">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <%= yield %>
+  </body>
+</html>
