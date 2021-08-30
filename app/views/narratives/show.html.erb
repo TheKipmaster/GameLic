@@ -1,38 +1,66 @@
 <p id="notice"><%= notice %></p>
 
-<% if @narrative.avatar.attached? %>
-  <%= image_tag(@narrative.avatar) %>
-<% end %>
+<div class="main" id="narratives-show">
 
-<p>
-  <strong>Título:</strong>
-  <%= @narrative.title %>
-</p>
+  <div class="narrative-header" style="background-image: url(<%= rails_blob_url(@narrative.avatar) %>)">
+    <h2><%= @narrative.title %></h2>
+    <h3>Narrado por <%= @narrative.narrator.name %></h3>
+  </div>
 
-<p>
-  <strong>Narrador:</strong>
-  <%= @narrative.narrator.name %>
-</p>
+  <div class="narrative-body">
+    <div class="left">
+      <div class="actions">
+        <%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action" do %>
+          <h3>
+            <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+          </h3>
+          <span>Inscrever-se <br> na mesa</span>
+        <% end %>
 
-<p>
-  <strong>Descrição:</strong>
-  <%= @narrative.description %>
-</p>
+        <div class="action">
+          <h3>
+            <%= @narrative.students.length %> / <%= @narrative.size %>
+          </h3>
+          <span>Inscritos</span>
+        </div>
 
-<p>
-  <strong>Número de Jogadores:</strong>
-  <%= @narrative.size %>
-</p>
+        <div class="action">
+          <h3>
+            <%= @narrative.students.length %> / <%= @narrative.size %>
+          </h3>
+          <span>Chat da mesa</span>
+        </div>
+      </div>
 
-<span>Jogadores: </span>
-<ul>
-  <% @narrative.students.each do |student| %>
-    <li><%= student.name %></li>
-  <% end %>
-</ul>
+      <div class="students">
+        <% @narrative.students.each do |student| %>
+          <div class="student">
+            <img src="<%= image_url('Imagens.svg') %>" alt="">
+            <span class="name"><%= student.name %></span>
+            <span class="nickname"><%= student.nickname %></span>
+          </div>
+        <% end %>
+      </div>
 
-<% if can? :choose_narrative, @narrative %>
-  <%= link_to 'Escolher essa narrativa', "/users/choose_narrative/#{@narrative.id}", method: :patch %> <br>
-<% end %>
-<%= link_to 'Editar', edit_narrative_path(@narrative) %> |
-<%= link_to 'Voltar', narratives_path %>
+      <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+      <%= link_to 'Voltar', narratives_path %>
+    </div>
+
+    <div class="right">
+      <div class="narrative-content" id="description">
+        <h3>Sinopse da Mesa</h3>
+        <span><%= @narrative.description %></span>
+      </div>
+      <div class="narrative-content" id="description">
+        <h3>Sinopse da Mesa</h3>
+        <span><%= @narrative.description %></span>
+      </div>
+      <div class="narrative-content" id="description">
+        <h3>Sinopse da Mesa</h3>
+        <span><%= @narrative.description %></span>
+      </div>
+    </div>
+  </div>
+
+
+</div>

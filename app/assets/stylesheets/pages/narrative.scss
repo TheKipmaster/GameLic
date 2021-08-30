@@ -1,0 +1,143 @@
+
+.main#narratives-show {
+  margin: 33px;
+  width: 60%;
+
+  .narrative-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    height: 30vh;
+    border-radius: 20px 20px 0 0;
+    padding: 2em;
+
+    color: white;
+    background-color: $nav-grey;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    h2 {
+      font-size: $thirty;
+      margin: 0;
+    }
+
+    h3 {
+      font-size: $twenty2;
+      margin: 0;
+    }
+  }
+
+  .narrative-body {
+    display: flex;
+    flex-direction: row;
+    background-color: $off-white;
+
+    padding: 2em;
+
+    .left {
+      flex: 2;
+      height: fit-content;
+      padding: 1em;
+
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 5px;
+
+      background-color: white;
+
+      .actions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        // align-items: center;
+
+        .action {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          text-align: center;
+          font-size: $fifteen;
+          text-decoration: none;
+
+          width: 40%;
+          height: 5em;
+
+          border: 1px solid #3D3D3D80;
+          border-radius: 5px;
+
+          margin-bottom: 1.5em;
+
+          h3 {
+            margin: 0;
+
+            img {
+              height: 1em;
+            }
+          }
+
+          span {
+            line-height: normal;
+          }
+        }
+      }
+
+      .students {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .student {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          text-align: center;
+
+          width: 30%;
+
+          margin-bottom: 1em;
+
+          img {
+            height: 1.5em;
+          }
+
+          .name {
+            font-size: $twenty;
+          }
+
+          .nickname {
+            font-size: $fifteen;
+          }
+        }
+      }
+    }
+    .right {
+      padding-left: 2em;
+      flex: 5;
+
+      .narrative-content {
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 0 0 40px 0;
+
+        padding: 0 0 1em 1em;
+        margin-bottom: 1em;
+
+        background-color: white;
+
+        h3 {
+          margin-top: 0;
+        }
+
+        #description {
+
+        }
+      }
+    }
+  }
+}
