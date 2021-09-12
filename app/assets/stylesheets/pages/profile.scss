@@ -1,10 +1,22 @@
-.cabe {
+.header-card {
   top: 154px;
   left: 321px;
   height: 250px;
-  background: #ECECEC 0% 0% no-repeat padding-box;
-  border-radius: 24px 24px 0px 0px;
+  background: #CFCFCF 0% 0% no-repeat padding-box;
+  border-radius: 20px 20px 0px 0px;
   opacity: 1;
+
+  img{
+    display: block;
+    margin-left: 3rem;
+    margin-top: 3rem;
+    margin-right: auto;
+  }
+}
+
+.header-card:hover{
+  background: rgb(185,185,185);
+  background: linear-gradient(0deg, rgba(185,185,185,1) 20%, rgba(207,207,207,1) 30%);
 }
 
 .nomeAluno {
@@ -19,13 +31,11 @@
 }
 
 .nomePersonagem {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-30)/var(--unnamed-line-spacing-39) var(--unnamed-font-family-roboto-slab);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-202020);
   text-align: left;
   font: normal normal normal 30px/39px Roboto Slab;
   letter-spacing: 0px;
-  color: #202020;
+  position: absolute;
+  color: #FFFFFF;
   opacity: 1;
 }
 
@@ -50,28 +60,23 @@
   opacity: 1;
 }
 
-body {
-  background-color: #eeeeee;
-}
-
 .h7 {
   font-size: 0.8rem;
 }
 
 .avatar {
-  height: 200px;
-  width: 200px;
-  background: #C0C0C0;
+  height: 165x;
+  width: 165px;
   position: relative;
 }
 
 .avatarSub {
   height: 100px;
   width: 100px;
-  background: #b43737;
   position: absolute;
-  right: -25px;
-  bottom: -25px;
+  right: -50px;
+  bottom: -40px;
+  border-radius: 75px;
 }
 
 .gedf-wrapper {
