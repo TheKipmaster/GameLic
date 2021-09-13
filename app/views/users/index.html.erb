@@ -4,15 +4,15 @@
       <div class="card body15">
         <div class="card-content">
 
-          <div class="card-body">
-            <h4 class="card-title">PERFIS CADASTRADOS</h4>
+          <div class="card-body titulo">
+            <h4 class="card-title titulo-perfis">PERFIS CADASTRADOS</h4>
           </div>
-
-          <div class="card-body row text-center tborder">
+          <%# INITIAL CARD %>
+          <div class="card-body row text-center tborder gedf-card">
               <div class="col tableMesa">
                 <table class="table table-borderless table-responsive-md">
 
-                  <thead class="tfontheader">
+                  <thead class="tfont">
                     <tr>
                       <th>Nome da Mesa</th>
                       <th>Inscritos: 4/5</th>
@@ -25,13 +25,13 @@
                       <th scope="col">Instituição</th>
                       <th scope="col">Mesa</th>
                       <th scope="col">Status do usuário</th>
-                      <th scope="col">Excluir</th>
+                      <th scope="col" class="text-center">Excluir</th>
                     </tr>
                   </thead>
 
                   <tbody class="tfontbody">
                     <tr>
-                      <th scope="col">JOÃO DA SILVA PINTO</th>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
                       <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
                       <td scope="col">
                         <select class="custom-select">
@@ -49,10 +49,17 @@
                           <option value="3">Three</option>
                         </select>
                       </td>
-                      <td scope="col"><i class="fas fa-user-times" style="color:red"></i></td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
                     </tr>
                     <tr>
-                      <th scope="col">JOÃO DA SILVA PINTO</th>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
                       <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
                       <td scope="col">
                         <select class="custom-select">
@@ -70,10 +77,17 @@
                           <option value="3">Three</option>
                         </select>
                       </td>
-                      <td scope="col"><i class="fas fa-user-times" style="color:red"></i></td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
                     </tr>
                     <tr>
-                      <th scope="col">JOÃO DA SILVA PINTO</th>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
                       <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
                       <td scope="col">
                         <select class="custom-select">
@@ -91,13 +105,133 @@
                           <option value="3">Three</option>
                         </select>
                       </td>
-                      <td scope="col"><i class="fas fa-user-times" style="color:red"></i></td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
+<%# FINISH CARD %>
+          <div class="card-body row text-center tborder gedf-card">
+              <div class="col tableMesa">
+                <table class="table table-borderless table-responsive-md">
+
+                  <thead class="tfont">
+                    <tr>
+                      <th>Nome da Mesa</th>
+                      <th>Inscritos: 4/5</th>
+                    </tr>
+                  </thead>
+
+                  <thead class="tfontheader">
+                    <tr>
+                      <th scope="col">Aluno</th>
+                      <th scope="col">Instituição</th>
+                      <th scope="col">Mesa</th>
+                      <th scope="col">Status do usuário</th>
+                      <th scope="col" class="text-center">Excluir</th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="tfontbody">
+                    <tr>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
+                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
+                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="col">JOÃO DA SILVA PINTO</td>
+                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                        <select class="custom-select">
+                          <option selected>Selecionar</option>
+                          <option value="1">One</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                        </select>
+                      </td>
+                      <td scope="col">
+                      <div class="users-actions">
+                        <a href="<%= root_path %>" class="btn-excluir">
+                          <img src="<%= image_url('Lixo.svg') %>" alt="">
+                          <span>Excluir</span>
+                        </a>
+                      </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

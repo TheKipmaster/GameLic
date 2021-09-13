@@ -5,28 +5,34 @@
     </a>
 
     <div class="site-actions">
-      <a href="<%= root_path %>">
+      <a href="<%= root_path %>" class="btn-navbar">
         <img src="<%= image_url('Pergaminho.svg') %>" alt="">
         <span>Minha Mesa</span>
       </a>
-      <a href="<%= narratives_path %>">
+      <a href="<%= narratives_path %>" class="btn-navbar">
         <img src="<%= image_url('Espada.svg') %>" alt="">
         <span>Campanhas</span>
       </a>
-      <a href="<%= root_path %>">
+      <a href="<%= root_path %>" class="btn-navbar">
         <img src="<%= image_url('Arquivos.svg') %>" alt="">
         <span>Fórum</span>
       </a>
-      <a href="<%= root_path %>">
+      <a href="<%= root_path %>" class="btn-navbar">
         <img src="<%= image_url('Midia.svg') %>" alt="">
         <span>Midioteca</span>
       </a>
     </div>
 
     <div class="user-actions">
-      <%= link_to 'Mensagens', root_path %>
-      <%= link_to 'Notificações', root_path %>
-      <%= link_to 'Perfil', root_path %>
+      <a href="<%= root_path %>" class="btn-circle">
+        <img src="<%= image_url('Conversation.svg') %>" alt="">
+      </a>
+      <a href="<%= root_path %>" class="btn-circle">
+        <img src="<%= image_url('Notification.svg') %>" alt="">
+      </a>
+      <a href="<%= root_path %>" class="btn-circle">
+        <img src="<%= image_url('ConfigureProfile.svg') %>" alt="">
+      </a>
     </div>
   </div>
 </nav>
