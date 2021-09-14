@@ -1,98 +1,65 @@
 <p id="notice"><%= notice %></p>
-
-<div class="main" id="narratives-index">
-
-  <div class="narratives-header">
-    <h1>CAMPANHAS</h1>
-
-    <% if can? :manage, Narrative %>
-      <div class="links">
-        <a href="<%= users_path %>">
-          <img src="<%= image_url('Pergaminho.svg') %>" alt="">
-          <span>Lista de Inscritos</span>
-        </a>
-
-        <a href="<%= new_narrative_path %>">
-          <img src="<%= image_url('Espada.svg') %>" alt="">
-          <span>Criar Nova Campanha</span>
-        </a>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="narratives-container">
-  <div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-</div>
-    <% @narratives.each do |narrative| %>
-      <a href="<%= narrative_path(narrative) %>" class="narrative-card">
-
-        <% if narrative.avatar.attached? %>
-          <%# <%= image_tag(narrative.avatar) %> %>
-        <% end %>
-        <h2>
-          <%= narrative.title %>
-        </h2>
-        <p>
-          <%= truncate(narrative.description, length: 130) %>
-        </p>
-
-        <div class="narrative-card-footer">
-          <% if narrative.open %>
-            <span>Há vagas</span>
-          <% else %>
-            <img src="<%= image_url('Lock.svg') %>" alt="">
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-sm-10 h-auto col-md-10 offset-md-1">
+      <div class="card body15">
+        <div class="narratives-header">
+          <h1>CAMPANHAS</h1>
+          <% if can? :manage, Narrative %>
+            <div class="links">
+              <a href="<%= users_path %>">
+                <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+                <span>Lista de Inscritos</span>
+              </a>
+              <a href="<%= new_narrative_path %>">
+                <img src="<%= image_url('Espada.svg') %>" alt="">
+                <span>Criar Nova Campanha</span>
+              </a>
+            </div>
           <% end %>
-          <span>
-            <b>
-              <%= narrative.students.length %> / <%= narrative.size %> <br>
-            </b>
-            Inscritos
-          </span>
         </div>
-      </a>
-    <% end %>
+        <div class="narratives-container">
+          <div class="">
+            <% @narratives.each do |narrative| %>
+              <a href="<%= narrative_path(narrative) %>" class="narrative-card">
+                <% if narrative.avatar.attached? %>
+                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100">
+                  <%# <%= image_tag(narrative.avatar) %>
+                <% end %>
+                <h2>
+                  <%= narrative.title %>
+                </h2>
+                <p>
+                  <%= truncate(narrative.description, length: 130) %>
+                </p>
+                <div class="narrative-card-footer">
+                  <% if narrative.open %>
+                    <span>Há vagas</span>
+                  <% else %>
+                    <img src="<%= image_url('Lock.svg') %>" alt="">
+                  <% end %>
+                  <span>
+                    <b>
+                      <%= narrative.students.length %> / <%= narrative.size %> <br>
+                    </b>
+                    Inscritos
+                  </span>
+                </div>
+              </a>
+            <% end %>
+          </div>
+          <% if can? :manage, Narrative %>
+            <% if Narrative.first.nil? %>
+              <%# If no narratives present in database, then show no link %>
+            <% elsif Narrative.open? %>
+              <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
+            <% else %>
+              <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
+            <% end %>
+          <% end %>
+          <%= link_to 'Início', root_path %>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <% if can? :manage, Narrative %>
-    <% if Narrative.first.nil? %>
-      <%# If no narratives present in database, then show no link %>
-    <% elsif Narrative.open? %>
-      <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
-    <% else %>
-      <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
-    <% end %>
-  <% end %>
-
-  <%= link_to 'Início', root_path %>
-
 </div>
