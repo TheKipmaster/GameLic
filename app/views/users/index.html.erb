@@ -7,15 +7,18 @@
           <div class="card-body titulo">
             <h4 class="card-title titulo-perfis">PERFIS CADASTRADOS</h4>
           </div>
-          <%# INITIAL CARD %>
-          <div class="card-body row text-center tborder gedf-card">
+
+
+          <%# Students in Narratives %>
+          <% @narratives.each do |narrative| %>
+            <div class="card-body row text-center tborder gedf-card">
               <div class="col tableMesa">
                 <table class="table table-borderless table-responsive-md">
 
                   <thead class="tfont">
                     <tr>
-                      <th>Nome da Mesa</th>
-                      <th>Inscritos: 4/5</th>
+                      <th><%= narrative.title %></th>
+                      <th>Inscritos: <%= narrative.students.length %> / <%= narrative.size %></th>
                     </tr>
                   </thead>
 
@@ -24,128 +27,80 @@
                       <th scope="col">Aluno</th>
                       <th scope="col">Instituição</th>
                       <th scope="col">Mesa</th>
-                      <th scope="col">Status do usuário</th>
-                      <th scope="col" class="text-center">Excluir</th>
+                      <%# <th scope="col">Status do usuário</th> %>
+                      <th scope="col" class="text-center">Salvar</th>
                     </tr>
                   </thead>
 
                   <tbody class="tfontbody">
-                    <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
-                      </td>
-                    </tr>
+                    <% narrative.students.each do |student| %>
+                      <tr>
+                        <td scope="col"><%= student.name %></td>
+                        <td scope="col"><%= student.institution %></td>
+                        <td scope="col">
+                          <%#= form.select(:narrative_id, @narratives, {}, { :class => "custom-select" }) %>
+                          <select class="custom-select">
+                            <option selected>Selecionar</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </td>
+                        <%#
+                          <td scope="col">
+                            <select class="custom-select">
+                              <option selected>Selecionar</option>
+                              <option value="1">One</option>
+                              <option value="2">Two</option>
+                              <option value="3">Three</option>
+                            </select>
+                          </td>
+                        %>
+                        <td scope="col">
+                          <div class="users-actions">
+                            <a href="<%= root_path %>" class="btn-excluir"> <%# @TODO: btn-salvar %>
+                              <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
+                              <span>Salvar</span>
+                            </a>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
                   </tbody>
                 </table>
               </div>
             </div>
-          </div>
-<%# FINISH CARD %>
+          <% end %>
+
+          <%# Remaining Students %>
           <div class="card-body row text-center tborder gedf-card">
-              <div class="col tableMesa">
-                <table class="table table-borderless table-responsive-md">
+            <div class="col tableMesa">
+              <table class="table table-borderless table-responsive-md">
 
-                  <thead class="tfont">
-                    <tr>
-                      <th>Nome da Mesa</th>
-                      <th>Inscritos: 4/5</th>
-                    </tr>
-                  </thead>
+                <thead class="tfont">
+                  <tr>
+                    <th>Alunos sem Narrativa</th>
+                    <th>Total: <%= @remaining_students.length %></th>
+                  </tr>
+                </thead>
 
-                  <thead class="tfontheader">
-                    <tr>
-                      <th scope="col">Aluno</th>
-                      <th scope="col">Instituição</th>
-                      <th scope="col">Mesa</th>
-                      <th scope="col">Status do usuário</th>
-                      <th scope="col" class="text-center">Excluir</th>
-                    </tr>
-                  </thead>
+                <thead class="tfontheader">
+                  <tr>
+                    <th scope="col">Aluno</th>
+                    <th scope="col">Instituição</th>
+                    <th scope="col">Mesa</th>
+                    <%# <th scope="col">Status do usuário</th> %>
+                    <th scope="col" class="text-center">Excluir</th>
+                  </tr>
+                </thead>
 
-                  <tbody class="tfontbody">
+                <tbody class="tfontbody">
+                  <% @remaining_students.each do |student| %>
                     <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
+                      <td scope="col"><%= student.name %></td>
+                      <td scope="col"><%= student.institution %></td>
                       <td scope="col">
+                        <%#= form.select(:narrative_id, @narratives, {}, { :class => "custom-select" }) %>
                         <select class="custom-select">
                           <option selected>Selecionar</option>
                           <option value="1">One</option>
@@ -153,85 +108,30 @@
                           <option value="3">Three</option>
                         </select>
                       </td>
+                      <%#
+                        <td scope="col">
+                          <select class="custom-select">
+                            <option selected>Selecionar</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                        </td>
+                      %>
                       <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
+                        <div class="users-actions">
+                          <a href="<%= root_path %>" class="btn-excluir">
+                            <img src="<%= image_url('Lixo.svg') %>" alt="">
+                            <span>Excluir</span>
+                          </a>
+                        </div>
                       </td>
                     </tr>
-                    <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td scope="col">JOÃO DA SILVA PINTO</td>
-                      <td scope="col">UNIVERSIDADE DE BRASÍLIA</td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <td scope="col">
-                      <div class="users-actions">
-                        <a href="<%= root_path %>" class="btn-excluir">
-                          <img src="<%= image_url('Lixo.svg') %>" alt="">
-                          <span>Excluir</span>
-                        </a>
-                      </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
           </div>
-
         </div>
       </div>
     </div>
@@ -240,31 +140,31 @@
 
 <% if false %>
 
-<h1>Index</h1>
+  <h1>Index</h1>
 
-<% @narratives.each do |narrative| %>
+  <% @narratives.each do |narrative| %>
 
-  <h2><%= narrative.title %> | <%= narrative.students.length %> / <%= narrative.size %></h2>
-  <h3>Narrador: <%= narrative.narrator.name %></h3>
+    <h2><%= narrative.title %> | <%= narrative.students.length %> / <%= narrative.size %></h2>
+    <h3>Narrador: <%= narrative.narrator.name %></h3>
 
+    <ul>
+      <% narrative.students.each do |student| %>
+        <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
+      <% end %>
+      <% if !narrative.full? %>
+        <% for i in 1..(narrative.size - narrative.students.length) %>
+          <li></li>
+        <% end %>
+      <% end %>
+    </ul>
+
+  <% end %>
+
+  <h2>Alunos sem narrativa</h2>
   <ul>
-    <% narrative.students.each do |student| %>
+    <% @remaining_students.each do |student| %>
       <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
     <% end %>
-    <% if !narrative.full? %>
-      <% for i in 1..(narrative.size - narrative.students.length) %>
-        <li></li>
-      <% end %>
-    <% end %>
   </ul>
-
-<% end %>
-
-<h2>Alunos sem narrativa</h2>
-<ul>
-  <% @remaining_students.each do |student| %>
-    <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
-  <% end %>
-</ul>
 
 <% end %>
