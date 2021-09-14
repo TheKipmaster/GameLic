@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_narrative, only: %i[ choose_narrative ]
   before_action :set_user, only: %i[ show edit update ]
-  before_action :set_narratives, only: %i[ edit update ]
+  before_action :set_narratives, only: %i[ edit update index ]
   load_and_authorize_resource :except => %i[ choose_narrative ]
 
   def index
-    @narratives = Narrative.all
     @remaining_students = Student.where(narrative_id: nil)
   end
 
@@ -51,11 +50,11 @@ class UsersController < ApplicationController
     end
 
     def set_narratives
-      narratives = Narrative.all
-      @narratives = []
+      @narratives = Narrative.all
+      @narratives_select = [["Nenhuma", nil]]
 
-      narratives.each do |narrative|
-        @narratives.append([narrative.title, narrative.id])
+      @narratives.each do |narrative|
+        @narratives_select.append([narrative.title, narrative.id])
       end
     end
 

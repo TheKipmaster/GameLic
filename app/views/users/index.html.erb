@@ -17,7 +17,7 @@
 
                   <thead class="tfont">
                     <tr>
-                      <th><%= narrative.title %></th>
+                      <th colspan="2"><%= narrative.title %></th>
                       <th>Inscritos: <%= narrative.students.length %> / <%= narrative.size %></th>
                     </tr>
                   </thead>
@@ -34,37 +34,51 @@
 
                   <tbody class="tfontbody">
                     <% narrative.students.each do |student| %>
-                      <tr>
-                        <td scope="col"><%= student.name %></td>
-                        <td scope="col"><%= student.institution %></td>
-                        <td scope="col">
-                          <%#= form.select(:narrative_id, @narratives, {}, { :class => "custom-select" }) %>
-                          <select class="custom-select">
-                            <option selected>Selecionar</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
-                        </td>
-                        <%#
+                      <%= form_with(scope: :user, local: true, url: user_path(student), method: :patch) do |form| %>
+                        <tr>
+                          <td scope="col"><%= student.name %></td>
+                          <td scope="col"><%= student.institution %></td>
                           <td scope="col">
-                            <select class="custom-select">
-                              <option selected>Selecionar</option>
-                              <option value="1">One</option>
-                              <option value="2">Two</option>
-                              <option value="3">Three</option>
-                            </select>
+                            <%= form.select(:narrative_id,
+                                            @narratives_select,
+                                            { :selected => student.narrative_id },
+                                            { :class => "custom-select" })
+                            %>
+                            <%#
+                              <select class="custom-select">
+                                <option selected>Selecionar</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            %>
                           </td>
-                        %>
-                        <td scope="col">
-                          <div class="users-actions">
-                            <a href="<%= root_path %>" class="btn-excluir"> <%# @TODO: btn-salvar %>
-                              <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
-                              <span>Salvar</span>
-                            </a>
-                          </div>
-                        </td>
-                      </tr>
+                          <%#
+                            <td scope="col">
+                              <select class="custom-select">
+                                <option selected>Selecionar</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                              </select>
+                            </td>
+                          %>
+                          <td scope="col">
+                            <div class="users-actions">
+                              <%= form.submit "Salvar", class: "btn-excluir" do %>
+                                <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
+                                <span>Salvar</span>
+                              <% end %>
+                              <% if false %>
+                                <a href="<%= root_path %>" class="btn-excluir"> <%# @TODO: btn-salvar %>
+                                  <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
+                                  <span>Salvar</span>
+                                </a>
+                              <% end %>
+                            </div>
+                          </td>
+                        </tr>
+                      <% end %>
                     <% end %>
                   </tbody>
                 </table>
@@ -89,26 +103,20 @@
                     <th scope="col">Aluno</th>
                     <th scope="col">Instituição</th>
                     <th scope="col">Mesa</th>
-                    <%# <th scope="col">Status do usuário</th> %>
+                    <th scope="col">Status do usuário</th>
                     <th scope="col" class="text-center">Excluir</th>
                   </tr>
                 </thead>
 
                 <tbody class="tfontbody">
                   <% @remaining_students.each do |student| %>
-                    <tr>
-                      <td scope="col"><%= student.name %></td>
-                      <td scope="col"><%= student.institution %></td>
-                      <td scope="col">
-                        <%#= form.select(:narrative_id, @narratives, {}, { :class => "custom-select" }) %>
-                        <select class="custom-select">
-                          <option selected>Selecionar</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </td>
-                      <%#
+                    <%= form_with(scope: :user, local: true, url: user_path(student), method: :patch) do |form| %>
+                      <tr>
+                        <td scope="col"><%= student.name %></td>
+                        <td scope="col"><%= student.institution %></td>
+                        <td scope="col">
+                          <%= form.select(:narrative_id, @narratives_select, { :value => student.narrative_id }, { :class => "custom-select" }) %>
+                        </td>
                         <td scope="col">
                           <select class="custom-select">
                             <option selected>Selecionar</option>
@@ -117,16 +125,16 @@
                             <option value="3">Three</option>
                           </select>
                         </td>
-                      %>
-                      <td scope="col">
-                        <div class="users-actions">
-                          <a href="<%= root_path %>" class="btn-excluir">
-                            <img src="<%= image_url('Lixo.svg') %>" alt="">
-                            <span>Excluir</span>
-                          </a>
-                        </div>
-                      </td>
-                    </tr>
+                        <td scope="col">
+                          <div class="users-actions">
+                              <%= form.submit "Salvar", class: "btn-excluir" do %>
+                                <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
+                                <span>Salvar</span>
+                              <% end %>
+                          </div>
+                        </td>
+                      </tr>
+                    <% end %>
                   <% end %>
                 </tbody>
               </table>
