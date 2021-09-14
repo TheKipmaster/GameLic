@@ -3,7 +3,10 @@
   <div class="row" >
     <div class="h-auto col-md-10 offset-md-1" >
       <div class="header-narr">
-        <div class="narrative-header" style="background-image: url(<%= rails_blob_url(@narrative.avatar) %>)">
+        <div
+          class="narrative-header"
+          style="background-image: url(<%= @narrative.avatar.attached? ? rails_blob_url(@narrative.avatar) : image_url('chatMesa.svg') %>)"
+        >
           <h2><%= @narrative.title %></h2>
           <h3>Narrado por ~<%= @narrative.narrator.name %></h3>
         </div>
