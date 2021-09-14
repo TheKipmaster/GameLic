@@ -1,66 +1,75 @@
 <p id="notice"><%= notice %></p>
-
-<div class="main" id="narratives-show">
-
-  <div class="narrative-header" style="background-image: url(<%= rails_blob_url(@narrative.avatar) %>)">
-    <h2><%= @narrative.title %></h2>
-    <h3>Narrado por <%= @narrative.narrator.name %></h3>
-  </div>
-
-  <div class="narrative-body">
-    <div class="left">
-      <div class="actions">
-        <%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action" do %>
-          <h3>
-            <img src="<%= image_url('Pergaminho.svg') %>" alt="">
-          </h3>
-          <span>Inscrever-se <br> na mesa</span>
-        <% end %>
-
-        <div class="action">
-          <h3>
-            <%= @narrative.students.length %> / <%= @narrative.size %>
-          </h3>
-          <span>Inscritos</span>
-        </div>
-
-        <div class="action">
-          <h3>
-            <%= @narrative.students.length %> / <%= @narrative.size %>
-          </h3>
-          <span>Chat da mesa</span>
+<div class="container-fluid">
+  <div class="row" >
+    <div class="h-auto col-md-10 offset-md-1" >
+      <div class="header-narr">
+        <div class="narrative-header" style="background-image: url(<%= rails_blob_url(@narrative.avatar) %>)">
+          <h2><%= @narrative.title %></h2>
+          <h3>Narrado por ~<%= @narrative.narrator.name %></h3>
         </div>
       </div>
-
-      <div class="students">
-        <% @narrative.students.each do |student| %>
-          <div class="student">
-            <img src="<%= image_url('Imagens.svg') %>" alt="">
-            <span class="name"><%= student.name %></span>
-            <span class="nickname"><%= student.nickname %></span>
+      <div class="card-body body">
+        <div class="row narrative-body">
+          <div class="col-md-3">
+            <div class="left">
+              <div class="actions">
+                <%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action" do %>
+                  <h3>
+                    <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+                  </h3>
+                  <span>Inscrever-se <br>
+                    na mesa</span>
+                <% end %>
+                <div class="action">
+                  <h3 class="font-weight-bold">
+                    <%= @narrative.students.length %> / <%= @narrative.size %>
+                  </h3>
+                  <span>Inscritos</span>
+                </div>
+                <div class="action" id="blue">
+                  <h3>
+                    <img src="<%= image_url('videoCam.svg') %>" alt="">
+                  </h3>
+                  <span>Chamada de video</span>
+                </div>
+                <div class="action" id="blue">
+                  <h3>
+                    <img src="<%= image_url('chatMesa.svg') %>" alt="">
+                  </h3>
+                  <span>Chat da mesa</span>
+                </div>
+              </div>
+              <div class="students">
+                <% @narrative.students.each do |student| %>
+                  <div class="student">
+                    <img src="<%= image_url('iconStudent.svg') %>" alt="">
+                    <span class="name"><%= student.name %></span>
+                    <span class="nickname"><%= student.nickname %></span>
+                  </div>
+                <% end %>
+              </div>
+              <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+              <%= link_to 'Voltar', narratives_path %>
+            </div>
           </div>
-        <% end %>
-      </div>
-
-      <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
-      <%= link_to 'Voltar', narratives_path %>
-    </div>
-
-    <div class="right">
-      <div class="narrative-content" id="description">
-        <h3>Sinopse da Mesa</h3>
-        <span><%= @narrative.description %></span>
-      </div>
-      <div class="narrative-content" id="description">
-        <h3>Sinopse da Mesa</h3>
-        <span><%= @narrative.description %></span>
-      </div>
-      <div class="narrative-content" id="description">
-        <h3>Sinopse da Mesa</h3>
-        <span><%= @narrative.description %></span>
+          <div class="col-md-9">
+            <div class="right">
+              <div class="narrative-content">
+                <h3>Sinopse da Mesa</h3>
+                <span>Roubei esse texto pq sou uma pessoa horrível, não repare. A história irá se passar na Grécia antiga mitológica, onde a presença de poderes e seres divinos é muito viva e integrada na vida de todos os habitantes dessa época. Os jogadores vão encarnar na pele de vários membros da sociedade da época e com a ajuda dos deuses do Olimpo irão partir em uma jornada para impedir que os Titãs, seres antigos e poderosos... pipippi popopo pupupu.</span>
+              </div>
+              <div class="narrative-content">
+                <h3>Sinopse da Mesa</h3>
+                <span><%= @narrative.description %></span>
+              </div>
+              <div class="narrative-content">
+                <h3>Sinopse da Mesa</h3>
+                <span><%= @narrative.description %></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
-
 </div>
