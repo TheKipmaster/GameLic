@@ -19,17 +19,6 @@
   background: linear-gradient(0deg, rgba(185,185,185,1) 20%, rgba(207,207,207,1) 30%);
 }
 
-.nomeAluno {
-  font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-bold) var(--unnamed-font-size-22)/var(--unnamed-line-spacing-27) var(--unnamed-font-family-roboto);
-  letter-spacing: var(--unnamed-character-spacing-0);
-  color: var(--unnamed-color-3d3d3d);
-  text-align: left;
-  font: normal normal bold 22px/27px Roboto;
-  letter-spacing: 0px;
-  color: #3D3D3D;
-  opacity: 1;
-}
-
 .nomePersonagem {
   text-align: left;
   font: normal normal normal 30px/39px Roboto Slab;
@@ -47,17 +36,189 @@
 }
 
 .post {
-  border: 3px solid #707070;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
   border-radius: 0px 0px 50px 0px;
   opacity: 1;
+  margin-right: 2%;
   /* max-width: 18rem; */
   max-height: auto;
+
+  .card-footer-profile{
+    text-align: center;
+    background: #ffffff00 0% 0% no-repeat padding-box;
+    
+    .links {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      // margin-top: 2%;
+      // margin-right: 6%;
+    
+    
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+        width: 7.2em;
+        height: 4.5em;
+        margin-left: 0.3em;
+        padding: 0 1em;
+        text-align: center;
+        text-decoration: none;
+
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        border-radius: 5px;
+        opacity: 1;
+    
+        span {
+          line-height: normal;
+          font-size: $fifteen;
+        }
+    
+        img {
+          width: 3.5rem;
+        }
+      }
+      a:hover {
+        background: #F18D19 0% 0% no-repeat padding-box;
+        box-shadow: 0px 3px 6px #00000029;
+        border: 1px solid #3D3D3D80;
+        border-radius: 5px;
+        opacity: 1;
+      }
+    }
+  
+  }
+
+  span{
+    text-align: center;
+    font: normal normal normal 15px/20px Roboto Slab;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+  }
+
+  #content{
+    text-align: left;
+    font: normal normal normal 20px/26px Roboto Slab;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+  }
+
+  h5{
+    text-align: left;
+    font: normal normal bold 22px/27px Roboto;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+  }
+
+  .user {
+    display: flex;
+    margin-top: auto;
+  }
+
+  .user img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .user-info h5 {
+    text-align: left;
+    font: normal normal bold 22px/27px Roboto;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+    margin: 0;
+  }
+  .user-info small {
+    text-align: left;
+    font: normal normal normal 15px/20px Roboto Slab;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+  }
 }
 
 .jogador {
-  border: 3px solid #707070;
+  display: flex;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
   border-radius: 12px;
   opacity: 1;
+  height: auto;
+  margin-left: 1rem;
+  justify-content: center;
+
+  h5{
+    color: var(--unnamed-color-3d3d3d);
+    text-align: center;
+    font: normal normal bold 20px/25px Roboto;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+    padding: 0.5em 0.5em;
+  }
+
+  h6{
+    text-align: center;
+    font: normal normal normal 17px/23px Roboto Slab;
+    letter-spacing: 0px;
+    color: #3D3D3D;
+    opacity: 1;
+  }
+
+  .pdf{
+    text-align: center;
+    display: flex;
+    // flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .action {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      font-size: $fifteen;
+      text-decoration: none;
+
+      width: 40%;
+      height: 4em;
+
+      h3 {
+        margin: 0;
+
+        img {
+          height: 1em;
+        }
+      }
+
+      span {
+        line-height: normal;
+      }
+    }
+    .action#orange:hover{
+      background: #F18D19 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 5px;
+      opacity: 1;
+      
+      span{
+        text-align: center;
+        // font: normal normal normal 15px/20px Roboto Slab;
+        letter-spacing: 0px;
+        color: #3D3D3D;
+        opacity: 1;
+      }
+    }
+  }
 }
 
 .h7 {
