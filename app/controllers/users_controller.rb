@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
   def index
     @remaining_students = Student.where(narrative_id: nil)
+    @narrators = Narrator.all
   end
 
   def choose_narrative
@@ -60,6 +61,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:nickname, :narrative_id)
+      params.require(:user).permit(:nickname, :narrative_id, :type)
     end
 end

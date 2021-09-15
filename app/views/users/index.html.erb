@@ -8,7 +8,6 @@
             <h4 class="card-title titulo-perfis">PERFIS CADASTRADOS</h4>
           </div>
 
-
           <%# Students in Narratives %>
           <% @narratives.each do |narrative| %>
             <div class="card-body row text-center tborder gedf-card">
@@ -44,37 +43,13 @@
                                             { :selected => student.narrative_id },
                                             { :class => "custom-select" })
                             %>
-                            <%#
-                              <select class="custom-select">
-                                <option selected>Selecionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                              </select>
-                            %>
                           </td>
-                          <%#
-                            <td scope="col">
-                              <select class="custom-select">
-                                <option selected>Selecionar</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                              </select>
-                            </td>
-                          %>
                           <td scope="col">
                             <div class="users-actions">
-                              <%= form.submit "Salvar", class: "btn-excluir" do %>
+                              <button type="submit" class="btn-excluir"> <%# @TODO: btn-salvar %>
                                 <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
                                 <span>Salvar</span>
-                              <% end %>
-                              <% if false %>
-                                <a href="<%= root_path %>" class="btn-excluir"> <%# @TODO: btn-salvar %>
-                                  <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
-                                  <span>Salvar</span>
-                                </a>
-                              <% end %>
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -104,7 +79,7 @@
                     <th scope="col">Instituição</th>
                     <th scope="col">Mesa</th>
                     <th scope="col">Status do usuário</th>
-                    <th scope="col" class="text-center">Excluir</th>
+                    <th scope="col" class="text-center">Salvar</th>
                   </tr>
                 </thead>
 
@@ -118,19 +93,13 @@
                           <%= form.select(:narrative_id, @narratives_select, { :value => student.narrative_id }, { :class => "custom-select" }) %>
                         </td>
                         <td scope="col">
-                          <select class="custom-select">
-                            <option selected>Selecionar</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                          </select>
+                          <%= form.select(:type, [["Aluno", "Student"], ["Narrador", "Narrator"]], { :value => student.type }, { :class => "custom-select" }) %>
                         </td>
                         <td scope="col">
                           <div class="users-actions">
-                              <%= form.submit "Salvar", class: "btn-excluir" do %>
+                              <button type="submit" class="btn-excluir"> <%# @TODO: btn-salvar %>
                                 <img src="<%= image_url('Icon awesome-check.svg') %>" alt="">
-                                <span>Salvar</span>
-                              <% end %>
+                              </button>
                           </div>
                         </td>
                       </tr>
@@ -145,34 +114,3 @@
     </div>
   </div>
 </div>
-
-<% if false %>
-
-  <h1>Index</h1>
-
-  <% @narratives.each do |narrative| %>
-
-    <h2><%= narrative.title %> | <%= narrative.students.length %> / <%= narrative.size %></h2>
-    <h3>Narrador: <%= narrative.narrator.name %></h3>
-
-    <ul>
-      <% narrative.students.each do |student| %>
-        <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
-      <% end %>
-      <% if !narrative.full? %>
-        <% for i in 1..(narrative.size - narrative.students.length) %>
-          <li></li>
-        <% end %>
-      <% end %>
-    </ul>
-
-  <% end %>
-
-  <h2>Alunos sem narrativa</h2>
-  <ul>
-    <% @remaining_students.each do |student| %>
-      <li><%= student.name %> | <%= link_to 'Editar', edit_user_path(student) %></li>
-    <% end %>
-  </ul>
-
-<% end %>
