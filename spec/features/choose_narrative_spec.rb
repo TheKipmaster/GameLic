@@ -26,9 +26,8 @@ feature "Choose narrative" do
   end
 
   scenario "with student logged in" do
-    byebug
     visit "/narratives"
-    click_link("Título")
+    click_link("Título") # @TODO: @narrative.title
     click_link("Inscrever-se na mesa")
     expect(page).to have_content @user.name
   end

@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
 
     context "promoted user" do
       it "is now a narrator" do
-        @user.type = "Narrator"
+        @user.promote
         @saved = @user.save
 
         expect(@saved).to eq(true)

@@ -10,7 +10,7 @@
 
           <%# Students in Narratives %>
           <% @narratives.each do |narrative| %>
-            <div class="card-body row text-center tborder gedf-card">
+            <div class="card-body row text-center tborder gedf-card" id="<%= narrative.title %>">
               <div class="col tableMesa">
                 <table class="table table-borderless table-responsive-md">
 
@@ -34,7 +34,7 @@
                   <tbody class="tfontbody">
                     <% narrative.students.each do |student| %>
                       <%= form_with(scope: :user, local: true, url: user_path(student), method: :patch) do |form| %>
-                        <tr>
+                        <tr id=<%= "#{student.name}-#{student.id}" %>>
                           <td scope="col"><%= student.name %></td>
                           <td scope="col"><%= student.institution %></td>
                           <td scope="col">
@@ -85,7 +85,7 @@
                 <tbody class="tfontbody">
                   <% @remaining_students.each do |student| %>
                     <%= form_with(scope: :user, local: true, url: user_path(student), method: :patch) do |form| %>
-                      <tr>
+                      <tr id=<%= "#{student.name}-#{student.id}" %>>
                         <td scope="col"><%= student.name %></td>
                         <td scope="col"><%= student.institution %></td>
                         <td scope="col">
