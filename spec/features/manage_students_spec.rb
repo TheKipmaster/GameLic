@@ -35,8 +35,8 @@ feature "Manage Students" do
     visit "/users"
 
     within("##{@user.name}-#{@user.id}") do
-      select @narrative.title, from: "user[narrative_id]" # @TODO: @narrative.title
-      click_on(class: "btn-excluir")
+      select @narrative.title, from: "user[narrative_id]"
+      click_on(class: "btn-salvar")
 
       expect(page).to have_css("select#user_narrative_id", :text => @narrative.title)
     end
