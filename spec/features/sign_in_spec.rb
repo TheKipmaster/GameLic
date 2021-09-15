@@ -6,9 +6,10 @@ feature "Signing in" do
   scenario "with unconfirmed user" do
     visit "/users/sign_in"
     within("form.new_user") do
-      fill_in "Email", with: "user@example.com"
-      fill_in "Senha", with: "caplin"
+      fill_in "Email", with: @user.email
+      fill_in "Senha", with: @user.password
     end
+
     click_button "Entrar"
     expect(page).to have_content "You have to confirm your email address before continuing"
   end

@@ -35,10 +35,10 @@ feature "Manage Students" do
     visit "/users"
 
     within("##{@user.name}-#{@user.id}") do
-      select "Verdade", from: "user[narrative_id]" # @TODO: @narrative.title
+      select @narrative.title, from: "user[narrative_id]" # @TODO: @narrative.title
       click_on(class: "btn-excluir")
 
-      expect(page).to have_css("select#user_narrative_id", :text => "Verdade")
+      expect(page).to have_css("select#user_narrative_id", :text => @narrative.title)
     end
   end
 end
