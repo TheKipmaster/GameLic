@@ -16,13 +16,17 @@
           <div class="col-md-3">
             <div class="left">
               <div class="actions">
-                <%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action" do %>
-                  <h3>
-                    <img src="<%= image_url('Pergaminho.svg') %>" alt="">
-                  </h3>
-                  <span>Inscrever-se <br>
-                    na mesa</span>
+
+                <% if not @narrative.open? %>
+                  <%= render partial: "choose", locals: { css_class: "closed" } %>
+                <% elsif @narrative.full? %>
+                  <%= render partial: "choose", locals: { css_class: "full" } %>
+                <% elsif current_user.narrative == @narrative %>
+                  <%= render partial: "choose", locals: { css_class: "chosen" } %>
+                <% else %>
+                  <%= render partial: "choose", locals: { css_class: "" } %>
                 <% end %>
+
                 <div class="action">
                   <h3 class="font-weight-bold">
                     <%= @narrative.students.length %> / <%= @narrative.size %>

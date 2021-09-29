@@ -1,0 +1,16 @@
+
+<%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action #{css_class}" do %>
+  <h3>
+    <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+  </h3>
+  <% case css_class %>
+  <% when "chosen" %>
+    <span>Inscrito<br>na mesa</span>
+  <% when "full" %>
+    <span>Mesa<br>completa</span>
+  <% when "closed" %>
+    <span>Inscrições<br>inativas</span>
+  <% when "" %>
+    <span>Inscrever-se<br>na mesa</span>
+  <% end %>
+<% end %>
