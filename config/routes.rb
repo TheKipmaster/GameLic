@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
 
+  # get
+
   resources :narratives do
+    resources :posts
     patch :open_registration, on: :collection
   end
 

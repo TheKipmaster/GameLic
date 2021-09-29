@@ -33,14 +33,14 @@
                   </h3>
                   <span>Inscritos</span>
                 </div>
-                <% if false %>
-                  <div class="action" id="blue">
-                    <h3>
-                      <img src="<%= image_url('videoCam.svg') %>" alt="">
-                    </h3>
-                    <span>Chamada de video</span>
-                  </div>
+
+                <%= link_to new_narrative_post_path(@narrative), class: "action" do %>
+                  <h3>
+                    <img src="<%= image_url('videoCam.svg') %>" alt="">
+                  </h3>
+                  <span>Adicionar Conteúdo</span>
                 <% end %>
+
                 <div class="action" id="blue">
                   <h3>
                     <img src="<%= image_url('chatMesa.svg') %>" alt="">
@@ -67,14 +67,13 @@
                 <h3>Sinopse da Mesa</h3>
                 <span>Roubei esse texto pq sou uma pessoa horrível, não repare. A história irá se passar na Grécia antiga mitológica, onde a presença de poderes e seres divinos é muito viva e integrada na vida de todos os habitantes dessa época. Os jogadores vão encarnar na pele de vários membros da sociedade da época e com a ajuda dos deuses do Olimpo irão partir em uma jornada para impedir que os Titãs, seres antigos e poderosos... pipippi popopo pupupu.</span>
               </div>
-              <div class="narrative-content">
-                <h3>Sinopse da Mesa</h3>
-                <span><%= @narrative.description %></span>
-              </div>
-              <div class="narrative-content">
-                <h3>Sinopse da Mesa</h3>
-                <span><%= @narrative.description %></span>
-              </div>
+
+              <% @narrative.posts.each do |post|  %>
+                <div class="narrative-content">
+                  <h3><%= post.user.name %></h3>
+                  <span><%= post.body %></span>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

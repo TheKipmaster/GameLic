@@ -13,7 +13,7 @@
           </div>
           <div class="col align-self-end">
             <div class="col">
-              <span class="nomePersonagem">Nome do Personagem</span>
+              <span class="nomePersonagem"><%= @user.name %></span>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="card gedf-card jogador">
               <div class="card-body">
                 <h5 class="card-title">Jogador Da Mesa:</h5>
-                <h6>Mesa de teste Jogada</h6>
+                <h6><%= @user.narrative.title %></h6>
                 <h5>Evolução na matéria</h5>
                 <div class="progress">
                   <div class="progress-bar progress-bar-striped progress-bar-animated"
