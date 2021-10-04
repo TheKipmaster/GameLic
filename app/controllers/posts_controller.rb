@@ -1,30 +1,31 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_narrative, only: %i[ new edit create update ]
+  load_and_authorize_resource
 
   # GET /posts or /posts.json
-  def index
-    @posts = Post.all
-  end
+  # def index
+  #   @posts = Post.all
+  # end
 
   # GET /posts/1 or /posts/1.json
-  def show
-  end
+  # def show
+  # end
 
-  # GET /posts/new
+  # GET narrative/:id/posts/new
   def new
-    @post = Post.new
+    # @post = Post.new
   end
 
-  # GET /posts/1/edit
+  # GET narrative/:id/posts/1/edit
   def edit
   end
 
-  # POST /posts or /posts.json
+  # POST narrative/:id/posts or narrative/:id/posts.json
   def create
-    @post = Post.new(post_params)
+    # @post = Post.new(post_params)
     @post.user = current_user
-    @post.narrative = @narrative
+    # @post.narrative = @narrative
 
     respond_to do |format|
       if @post.save
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1 or /posts/1.json
+  # PATCH/PUT narrative/:id/posts/1 or narrative/:id/posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -50,11 +51,11 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1 or /posts/1.json
+  # DELETE narrative/:id/posts/1 or narrative/:id/posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
+      format.html { redirect_to @narrative, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end

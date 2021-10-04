@@ -13,9 +13,20 @@ class Ability
     if user.narrator?
       can :manage, :all
       cannot :choose_narrative, Narrative
+      # can :manage, Post, narrative: { narrator: user }
     elsif user.student?
       can [:read, :choose_narrative], Narrative, open: true
-      can :read, Student, id: user.id
+
+      cannot :index, User
+      can [:view, :update], Student, id: user.id
+
+      if user.narrative != nil
+        can :read, Narrative, id: user.narrative.id
+        can [:read, :create], Post, narrative: user.narrative
+      end
+
+      cannot [:create], Post, narrative: { open: true }
+      can :update, Post, user: user
     end
 
     # The first argument to `can` is the action you are giving the user

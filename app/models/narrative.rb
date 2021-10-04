@@ -6,7 +6,7 @@ class Narrative < ApplicationRecord
   # validates :user_id, uniqueness: true # { scope: archived: false }
 
   # def self.default_scope
-  #   where(archived: false)
+  #   where(archived: false, general_board: false)
   # end
 
   def self.open?
