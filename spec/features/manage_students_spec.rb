@@ -1,5 +1,7 @@
+require 'rails_helper'
+
 feature "Manage Students" do
-  background(:all) do
+  let!(:each) do
     @narrator = User.create(
       email: "ronaldo@example.com",
       password: "caplin123",
