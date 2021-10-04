@@ -2,16 +2,31 @@ require 'rails_helper'
 
 RSpec.describe "posts/new", type: :view do
   before(:each) do
+    @user = User.create(
+      email: "joao@example.com",
+      password: "caplin",
+      name: "joao"
+    )
+    @user.confirm
+
     assign(:post, Post.new(
       body: "MyText",
-      allow: ""
+      allow: true,
+      user: @user
     ))
+
+    @narrative = Narrative.create(
+      title: "Título",
+      description: "Lorem",
+      size: 5,
+      narrator: @narrator
+    )
   end
 
   it "renders new post form" do
     render
 
-    assert_select "form[action=?][method=?]", posts_path, "post" do
+    assert_select "form[action=?][method=?]", narrative_posts_path(@narrative), "post" do
 
       assert_select "textarea[name=?]", "post[body]"
 

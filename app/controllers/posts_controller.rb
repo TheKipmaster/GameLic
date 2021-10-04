@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :set_narrative, only: %i[ new edit create update ]
+  before_action :set_narrative #, only: %i[ new edit create update destroy ]
   load_and_authorize_resource
 
   # GET /posts or /posts.json

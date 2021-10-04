@@ -26,7 +26,7 @@ class Ability
       end
 
       cannot [:create], Post, narrative: { open: true }
-      can :update, Post, user: user
+      can [:update, :destroy], Post, user: user
     end
 
     # The first argument to `can` is the action you are giving the user

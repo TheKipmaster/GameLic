@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get
 
   resources :narratives do
-    resources :posts
+    resources :posts, only: [:new, :edit, :create, :update, :destroy]
     patch :open_registration, on: :collection
   end
 

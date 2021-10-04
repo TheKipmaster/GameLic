@@ -13,36 +13,62 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/posts", type: :request do
-  
+  let!(:each) do
+    @narrator = User.create(
+      email: "vitor@example.com",
+      password: "caplin123",
+      name: "vitor",
+      type: "Narrator"
+    )
+    @narrator.confirm
+
+    @narrative = Narrative.create(
+      title: "Título",
+      description: "Lorem",
+      size: 5,
+      narrator: @narrator
+    )
+    Narrative.toggle_open
+
+    @user = User.create(
+      email: "joao@example.com",
+      password: "caplin",
+      name: "joao",
+      narrative: @narrative
+    )
+    @user.confirm
+    login_as @user
+  end
+
   # Post. As you add validations to Post, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { body: "corpo", allow: false, user: @user, narrative: @narrative }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { allow: false, user: @user, narrative: @narrative }
   }
 
-  describe "GET /index" do
-    it "renders a successful response" do
-      Post.create! valid_attributes
-      get posts_url
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET /index" do
+  #   it "renders a successful response" do
+  #     Post.create! valid_attributes
+  #     get narrative_posts_url
+  #     expect(response).to be_successful
+  #   end
+  # end
 
-  describe "GET /show" do
-    it "renders a successful response" do
-      post = Post.create! valid_attributes
-      get post_url(post)
-      expect(response).to be_successful
-    end
-  end
+  # describe "GET /show" do
+  #   it "renders a successful response" do
+  #     post = Post.create! valid_attributes
+  #     get narrative_posts_url(post)
+  #     expect(response).to be_successful
+  #   end
+  # end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_post_url
+      get new_narrative_post_url(@narrative)
       expect(response).to be_successful
     end
   end
@@ -50,7 +76,7 @@ RSpec.describe "/posts", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       post = Post.create! valid_attributes
-      get edit_post_url(post)
+      get edit_narrative_post_url(@narrative, post)
       expect(response).to be_successful
     end
   end
@@ -59,25 +85,25 @@ RSpec.describe "/posts", type: :request do
     context "with valid parameters" do
       it "creates a new Post" do
         expect {
-          post posts_url, params: { post: valid_attributes }
+          post narrative_posts_url(@narrative), params: { post: valid_attributes }
         }.to change(Post, :count).by(1)
       end
 
-      it "redirects to the created post" do
-        post posts_url, params: { post: valid_attributes }
-        expect(response).to redirect_to(post_url(Post.last))
+      it "redirects to the created post's narrative" do
+        post narrative_posts_url(@narrative), params: { post: valid_attributes }
+        expect(response).to redirect_to(@narrative)
       end
     end
 
     context "with invalid parameters" do
       it "does not create a new Post" do
         expect {
-          post posts_url, params: { post: invalid_attributes }
+          post narrative_posts_url(@narrative), params: { post: invalid_attributes }
         }.to change(Post, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
-        post posts_url, params: { post: invalid_attributes }
+        post narrative_posts_url(@narrative), params: { post: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -86,28 +112,28 @@ RSpec.describe "/posts", type: :request do
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { body: "body", allow: true }
       }
 
       it "updates the requested post" do
         post = Post.create! valid_attributes
-        patch post_url(post), params: { post: new_attributes }
+        patch narrative_post_url(@narrative, post), params: { post: new_attributes }
         post.reload
-        skip("Add assertions for updated state")
+        expect(post.allow).to eq(true)
       end
 
-      it "redirects to the post" do
+      it "redirects to the post's narrative" do
         post = Post.create! valid_attributes
-        patch post_url(post), params: { post: new_attributes }
+        patch narrative_post_url(@narrative, post), params: { post: new_attributes }
         post.reload
-        expect(response).to redirect_to(post_url(post))
+        expect(response).to redirect_to(@narrative)
       end
     end
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         post = Post.create! valid_attributes
-        patch post_url(post), params: { post: invalid_attributes }
+        patch narrative_post_url(@narrative, post), params: { post: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -117,14 +143,14 @@ RSpec.describe "/posts", type: :request do
     it "destroys the requested post" do
       post = Post.create! valid_attributes
       expect {
-        delete post_url(post)
+        delete narrative_post_url(@narrative, post)
       }.to change(Post, :count).by(-1)
     end
 
-    it "redirects to the posts list" do
+    it "redirects to the post's narrative" do
       post = Post.create! valid_attributes
-      delete post_url(post)
-      expect(response).to redirect_to(posts_url)
+      delete narrative_post_url(@narrative, post)
+      expect(response).to redirect_to(@narrative)
     end
   end
 end
