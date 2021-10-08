@@ -16,6 +16,7 @@
 .heading-section{
 	font-size: 28px;
 	color: black;
+    box-shadow: 0px 3px 6px #00000029;
 }
 
 //COVER BG
@@ -37,6 +38,14 @@
 		font-size: 20px;
 		color: black;
 	}
+    .dashed{
+        background: transparent;
+        border: 1px solid #CFCFCF;
+        border-radius: 5px;
+        border-bottom: 2px dashed;
+		color: #CFCFCF;
+        opacity: 1;
+    }
 	.icon{
 		width: 80px;
 		height: 80px;

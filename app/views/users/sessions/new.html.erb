@@ -11,16 +11,16 @@
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
             <div class="form-group">
               <%= f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-left"%>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-left dashed"%>
             </div>
-            <div class="form-group d-flex">
+            <div class="form-group">
               <%= f.label :password, "Senha" %>
-              <%= f.password_field :password, autocomplete: "current-password", class:"form-control rounded-left" %>
+              <%= f.password_field :password, autocomplete: "current-password", class:"form-control rounded-left dashed" %>
             </div>
             <% if devise_mapping.rememberable? %>
               <div class="form-group d-md-flex">
                 <%= f.check_box :remember_me, class:"checkbox-primary" %>
-                <%= f.label :remember_me, "Manter-me conectado"  %>
+                <%= f.label :remember_me, "  Manter-me conectado"  %>
               </div>
             <% end %>
             <div class="actions">
@@ -30,7 +30,7 @@
           <div class="form-group">
             <%= render "users/shared/links" %>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
