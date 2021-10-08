@@ -1,26 +1,38 @@
-<h2>Entrar</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, "Senha" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me%>
-      <%= f.label :remember_me, "Manter-me conectado"  %>
+<section class="ftco-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><img src="<%= image_url('Logo.svg') %>" ></h2>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Entrar" %>
+    <div class="row justify-content-center">
+      <div class="col-md-6 col-lg-5">
+        <div class="login-wrap p-4 p-md-5">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
+            <div class="form-group">
+              <%= f.label :email %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control rounded-left"%>
+            </div>
+            <div class="form-group d-flex">
+              <%= f.label :password, "Senha" %>
+              <%= f.password_field :password, autocomplete: "current-password", class:"form-control rounded-left" %>
+            </div>
+            <% if devise_mapping.rememberable? %>
+              <div class="form-group d-md-flex">
+                <%= f.check_box :remember_me, class:"checkbox-primary" %>
+                <%= f.label :remember_me, "Manter-me conectado"  %>
+              </div>
+            <% end %>
+            <div class="actions">
+              <%= f.submit "Entrar" %>
+            </div>
+          <% end %>
+          <div class="form-group">
+            <%= render "users/shared/links" %>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>
+</section>
