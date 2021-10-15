@@ -7,6 +7,13 @@
           <h1>CAMPANHAS</h1>
           <% if can? :manage, Narrative %>
             <div class="links">
+              <% if Narrative.first.nil? %>
+                <%# If no narratives present in database, then show no link %>
+              <% elsif Narrative.open? %>
+                <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
+              <% else %>
+                <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
+              <% end %>
               <a href="<%= users_path %>">
                 <img src="<%= image_url('Pergaminho.svg') %>" alt="">
                 <span>Lista de Inscritos</span>
