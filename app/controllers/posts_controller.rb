@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
   before_action :set_narrative #, only: %i[ new edit create update destroy ]
-  load_and_authorize_resource
+  load_and_authorize_resource :post, :through => :narrative
 
   # GET /posts or /posts.json
   # def index
@@ -23,9 +23,7 @@ class PostsController < ApplicationController
 
   # POST narrative/:id/posts or narrative/:id/posts.json
   def create
-    # @post = Post.new(post_params)
     @post.user = current_user
-    # @post.narrative = @narrative
 
     respond_to do |format|
       if @post.save
@@ -72,6 +70,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:body, :allow, files: [])
+      params.require(:post).permit(:body, :narrative_id, :allow, files: [])
     end
 end

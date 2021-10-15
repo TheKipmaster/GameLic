@@ -11,9 +11,10 @@ class Ability
     cannot :manage, :all
 
     if user.narrator?
-      can :manage, :all
+      can :manage, [Narrative, User]
       cannot :choose_narrative, Narrative
-      # can :manage, Post, narrative: { narrator: user }
+
+      can :manage, Post, narrative: { narrator: user }
     elsif user.student?
       can [:read, :choose_narrative], Narrative, open: true
 
