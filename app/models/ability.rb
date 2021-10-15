@@ -19,7 +19,7 @@ class Ability
       can [:read, :choose_narrative], Narrative, open: true
 
       cannot :index, User
-      can [:view, :update], Student, id: user.id
+      can [:show, :update], Student, id: user.id
 
       if user.narrative != nil
         can :read, Narrative, id: user.narrative.id
