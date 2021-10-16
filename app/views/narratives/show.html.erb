@@ -50,11 +50,11 @@
               </div>
               <div class="students">
                 <% @narrative.students.each do |student| %>
-                  <div class="student">
+                  <%= link_to user_path(student), class: "student" do %>
                     <img src="<%= image_url('iconStudent.svg') %>" alt="">
-                    <span class="name"><%= student.name %></span>
+                    <span class="name"><%= truncate(student.name, length: 19) %></span>
                     <span class="nickname"><%= student.nickname %></span>
-                  </div>
+                  <% end %>
                 <% end %>
               </div>
               <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
@@ -65,16 +65,17 @@
             <div class="right">
               <div class="narrative-content">
                 <h3>Sinopse da Mesa</h3>
-                <span>Roubei esse texto pq sou uma pessoa horrível, não repare. A história irá se passar na Grécia antiga mitológica, onde a presença de poderes e seres divinos é muito viva e integrada na vida de todos os habitantes dessa época. Os jogadores vão encarnar na pele de vários membros da sociedade da época e com a ajuda dos deuses do Olimpo irão partir em uma jornada para impedir que os Titãs, seres antigos e poderosos... pipippi popopo pupupu.</span>
+                <span><%= @narrative.description %></span>
               </div>
 
               <% @narrative.posts.each do |post|  %>
                 <div class="narrative-content">
                   <h3><%= post.user.name %></h3>
                   <span><%= post.body %></span>
+                  <br>
                   <span>
                     <% post.files.each do |file| %>
-                      <%= link_to 'Arquivo', rails_blob_path(file, disposition: "attachment") %> <%# url_for(file) %>
+                      <br><%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %> <%# url_for(file) %>
                     <% end %>
                   </span>
                 </div>
