@@ -2,6 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "posts/edit", type: :view do
   before(:each) do
+    @narrator = User.create(
+      email: "vitor@example.com",
+      password: "caplin123",
+      name: "vitor",
+      type: "Narrator"
+    )
+    @narrator.confirm
+
     @user = User.create(
       email: "joao@example.com",
       password: "caplin",

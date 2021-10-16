@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    # byebug
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to users_path, notice: "User was successfully updated." }
@@ -61,6 +62,8 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:nickname, :narrative_id, :type)
+      params.require(:user).permit(
+        :nickname, :narrative_id, :type, :avatar, :portrait, :character_sheet
+      )
     end
 end
