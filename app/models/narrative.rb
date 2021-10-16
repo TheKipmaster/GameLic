@@ -2,7 +2,7 @@ class Narrative < ApplicationRecord
   has_many :students
   has_many :posts
   belongs_to :narrator, foreign_key: :user_id, optional: true
-  has_one_attached :avatar
+  has_one_attached :cover
   # validates :user_id, uniqueness: true # { scope: archived: false }
 
   # def self.default_scope

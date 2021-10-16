@@ -5,7 +5,7 @@
       <div class="header-narr">
         <div
           class="narrative-header"
-          style="background-image: url(<%= @narrative.avatar.attached? ? rails_blob_url(@narrative.avatar) : image_url('chatMesa.svg') %>)"
+          style="background-image: url(<%= @narrative.cover.attached? ? rails_blob_url(@narrative.cover) : image_url('chatMesa.svg') %>)"
         >
           <h2><%= @narrative.title %></h2>
           <h3>Narrado por ~<%= @narrative.narrator.name %></h3>

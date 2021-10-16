@@ -30,8 +30,8 @@
             <div class="card-narrative">
               <a href="<%= narrative_path(narrative) %>" class="">
                 <div class="card-header card-header-narrative">
-                  <% if narrative.avatar.attached? %>
-                    <%= image_tag(narrative.avatar) %>
+                  <% if narrative.cover.attached? %>
+                    <%= image_tag(narrative.cover) %>
                   <% else %>
                     <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100">
                   <% end %>
