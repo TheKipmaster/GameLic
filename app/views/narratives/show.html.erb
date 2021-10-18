@@ -21,7 +21,7 @@
                   <%= render partial: "choose", locals: { css_class: "closed" } %>
                 <% elsif @narrative.full? %>
                   <%= render partial: "choose", locals: { css_class: "full" } %>
-                <% elsif current_user.narrative == @narrative %>
+                <% elsif current_user.student? and current_user.narrative == @narrative %>
                   <%= render partial: "choose", locals: { css_class: "chosen" } %>
                 <% else %>
                   <%= render partial: "choose", locals: { css_class: "" } %>
