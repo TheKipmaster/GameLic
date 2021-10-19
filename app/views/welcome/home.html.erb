@@ -1,0 +1,51 @@
+
+<%= link_to "Narrativas", narratives_path %><br />
+<% if current_user %>
+  <%= link_to "Perfil", user_path(current_user) %><br />
+  <%= link_to "Sair", destroy_user_session_path, method: :delete %><br />
+<% else %>
+  <%= link_to "Entrar", new_user_session_path %><br />
+  <%= link_to "Cadastrar-se", new_user_registration_path %><br />
+<% end %>
+
+<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="h-auto col-md-10 offset-md-1">
+      <div class="header-narr">
+        <div
+          class="narrative-header"
+          style="background-image: url(<%= @forum.cover.attached? ? rails_blob_url(@forum.cover) : image_url('chatMesa.svg') %>)"
+        >
+          <h2><%= @forum.title %></h2>
+        </div>
+      </div>
+      <div class="card-body body">
+        <div class="row narrative-body">
+          <div class="col-md-9">
+            <div class="right">
+              <div class="narrative-content">
+                <h3>Links Importantes</h3>
+                <span><%= link_to "Editar", edit_narrative_path(@forum) %></span>
+                <span><%= link_to "Nova Postagem", new_narrative_post_path(@forum) %></span>
+              </div>
+
+              <% @forum.posts.each do |post|  %>
+                <div class="narrative-content">
+                  <span><%= post.body %></span>
+                  <br>
+                  <span>
+                    <% post.files.each do |file| %>
+                      <br><%= link_to "Baixar #{file.filename}", rails_blob_path(file, disposition: "attachment") %>
+                      <%= link_to file.filename, url_for(file) %> <%# url_for(file) %>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  root to: 'welcome#home'
+  # get 'midioteca' to: 'welcome#media'
 
   # get
 

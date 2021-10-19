@@ -3,11 +3,11 @@ class Narrative < ApplicationRecord
   has_many :posts
   belongs_to :narrator, foreign_key: :user_id
   has_one_attached :cover
-  # validates :user_id, uniqueness: true # { scope: archived: false }
 
-  # def self.default_scope
-  #   where(archived: false, general_board: false)
-  # end
+  def self.default_scope
+    where(main_forum: false) # archived: false
+  end
+  scope :include_main_forum, -> { unscope(where: :main_forum) }
 
   def self.open?
     self.first.open
