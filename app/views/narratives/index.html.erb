@@ -7,7 +7,7 @@
           <h1>CAMPANHAS</h1>
           <% if can? :manage, Narrative %>
             <div class="links">
-              <%= link_to "Arquivar Narrativas", archive_narratives_path, method: :patch %>
+              <%= link_to "Arquivar Narrativas", archive_narratives_path, method: :patch, data: { confirm: "Tem certeza? Todas as Narrativas serão arquivadas" } %>
               <% if Narrative.first.nil? %>
                 <%# If no narratives present in database, then show no link %>
               <% elsif Narrative.open? %>
