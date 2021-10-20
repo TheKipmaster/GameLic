@@ -65,7 +65,7 @@ class PostsController < ApplicationController
     end
 
     def set_narrative
-      @narrative = Narrative.include_main_forum.find(params[:narrative_id])
+      @narrative = Narrative.include_everything.find(params[:narrative_id])
     end
 
     # Only allow a list of trusted parameters through.

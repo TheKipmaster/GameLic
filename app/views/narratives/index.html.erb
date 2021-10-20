@@ -7,12 +7,13 @@
           <h1>CAMPANHAS</h1>
           <% if can? :manage, Narrative %>
             <div class="links">
+              <%= link_to "Arquivar Narrativas", archive_narratives_path, method: :patch %>
               <% if Narrative.first.nil? %>
                 <%# If no narratives present in database, then show no link %>
               <% elsif Narrative.open? %>
-                <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %> <br>
+                <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %>
               <% else %>
-                <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %> <br>
+                <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %>
               <% end %>
               <a href="<%= users_path %>">
                 <img src="<%= image_url('Pergaminho.svg') %>" alt="">
@@ -57,3 +58,7 @@
             </div>
           <% end %>
         </div>
+      </div>
+    </div>
+  </div>
+</div>

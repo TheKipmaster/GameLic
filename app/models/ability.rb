@@ -15,6 +15,8 @@ class Ability
       cannot :choose_narrative, Narrative
 
       can :manage, Post, narrative: { narrator: user }
+      # can :manage, Post, narrative: { main: true }
+      # can :manage, Post, narrative: user.narrative
     elsif user.student?
       can [:read, :choose_narrative], Narrative, open: true
 

@@ -4,5 +4,6 @@ class WelcomeController < ApplicationController
   end
 
   def media
+    @narratives = Narrative.archived
   end
 end

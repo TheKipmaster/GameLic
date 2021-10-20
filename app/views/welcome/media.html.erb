@@ -1,0 +1,17 @@
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-sm-10 h-auto col-md-10 offset-md-1">
+      <div class="card body15">
+        <div class="narratives-header">
+          <h1>CAMPANHAS ARQUIVADAS</h1>
+        </div>
+
+        <div>
+          <% @narratives.each do |narrative| %>
+            <span><%= narrative.title %></span> <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

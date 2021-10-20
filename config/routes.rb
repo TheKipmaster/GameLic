@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: 'welcome#home'
-  # get 'midioteca' to: 'welcome#media'
-
-  # get
+  get 'media', to: 'welcome#media'
 
   resources :narratives do
     resources :posts, only: [:new, :edit, :create, :update, :destroy]
-    patch :open_registration, on: :collection
+    collection do
+      patch :open_registration
+      patch :archive
+    end
   end
 
   devise_for :users, controllers: {

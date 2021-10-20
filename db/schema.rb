@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_19_190414) do
+ActiveRecord::Schema.define(version: 2021_10_20_192813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_10_19_190414) do
     t.integer "size"
     t.bigint "user_id"
     t.boolean "main_forum", default: false
+    t.boolean "archived", default: false
     t.index ["user_id"], name: "index_narratives_on_user_id"
   end
 

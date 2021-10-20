@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :posts
-  has_one_attached :avatar
+  has_one_attached :avatar # TODO: character_portrait?
   has_one_attached :portrait
   has_one_attached :character_sheet
   # Include default devise modules. Others available are:
@@ -33,5 +33,9 @@ class User < ApplicationRecord
 
   def narrator?
     type == 'Narrator'
+  end
+
+  def manager?
+    type == 'Manager'
   end
 end
