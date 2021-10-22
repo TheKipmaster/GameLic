@@ -13,6 +13,8 @@ gem 'puma', '~> 4.1'
 gem 'devise'
 # Use CanCanCan for authorization
 gem 'cancancan'
+# User mailboxer for sending messages
+gem 'mailboxer'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

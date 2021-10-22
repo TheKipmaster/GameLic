@@ -1,0 +1,17 @@
+<h1>Nova Conversa</h1>
+
+<%= form_tag conversations_path, method: :post do %>
+  <div class="field">
+    <%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= text_field_tag :subject, nil, placeholder: "Assunto" %>
+  </div>
+
+  <div class="field">
+    <%= text_area_tag :body, nil, placeholder: "Sua mensagem aqui" %>
+  </div>
+
+  <%= submit_tag %>
+<% end %>

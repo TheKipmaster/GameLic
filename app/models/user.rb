@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_one_attached :avatar # TODO: character_portrait?
   has_one_attached :portrait
   has_one_attached :character_sheet
+
+  acts_as_messageable
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -15,6 +18,14 @@ class User < ApplicationRecord
     if self.class != self.type.classify.constantize && self.student?
       self.errors.add(:base, "associated narratives must have new narrator") unless self.narratives.length == 0
     end
+  end
+
+  # def name
+  #   return name
+  # end
+
+  def mailboxer_email(object)
+    email
   end
 
   def promote # @TODO: remover referencias para narrativas

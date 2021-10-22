@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :conversations do
+    resources :messages
+  end
+
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
     sessions: 'users/sessions',
