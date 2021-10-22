@@ -65,13 +65,14 @@
             <div class="right">
               <div class="narrative-content">
                 <h3>Sinopse da Mesa</h3>
-                <span><%= @narrative.description %></span>
+                <%= sanitize @narrative.description.to_html %>
               </div>
 
               <% @narrative.posts.each do |post|  %>
                 <div class="narrative-content">
                   <h3><%= post.user.name %></h3>
-                  <span><%= post.body %></span>
+                  <%= link_to 'Editar', edit_narrative_post_path(@narrative, post) %>
+                  <span><%= sanitize post.body.to_html %></span>
                   <br>
                   <span>
                     <% post.files.each do |file| %>

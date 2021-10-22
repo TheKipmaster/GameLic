@@ -23,14 +23,16 @@
           <div class="col-md-3">
             <div class="card gedf-card jogador">
               <div class="card-body">
-                <% if @user.student? %>
+                <% if @user.student? and @user.narrative %>
                   <h5 class="card-title">Jogador Da Mesa:</h5>
                   <h6><%= link_to @user.narrative.title, narrative_path(@user.narrative) %></h6>
-                <% else %>
+                <% elsif @user.narrator? and @user.narratives %>
                   <h5 class="card-title">Narrador Da(s) Mesa(s):</h5>
                   <% @user.narratives.each do |narrative| %>
                     <h6><%= link_to narrative.title, narrative_path(narrative) %></h6>
                   <% end %>
+                <% else %>
+                  <h5 class="card-title">Não cadastrado em nenhuma mesa</h5>
                 <% end %>
                 <h5>Evolução na matéria</h5>
                 <div class="progress">

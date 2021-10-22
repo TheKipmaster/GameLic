@@ -13,8 +13,11 @@ gem 'puma', '~> 4.1'
 gem 'devise'
 # Use CanCanCan for authorization
 gem 'cancancan'
-# User mailboxer for sending messages
+# Use mailboxer for sending messages
 gem 'mailboxer'
+# Use acts_as_markup and redcarpet for saving and displaying markdown
+gem 'acts_as_markup'
+gem 'redcarpet'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker

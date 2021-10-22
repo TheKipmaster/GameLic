@@ -4,6 +4,8 @@ class Narrative < ApplicationRecord
   belongs_to :narrator, foreign_key: :user_id
   has_one_attached :cover
 
+  acts_as_markdown :description
+
   def self.default_scope
     where(main_forum: false, archived: false)
   end
