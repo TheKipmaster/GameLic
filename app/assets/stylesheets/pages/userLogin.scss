@@ -1,67 +1,74 @@
-.bg-primary{
-	background: white !important;
-}
-
-.ftco-section{
-	padding: 7em 0;
-}
-
-.ftco-no-pt{
-	padding-top: 0;
-}
-.ftco-no-pb{
-	padding-bottom: 0;
-}
-//HEADING SECTION
-.heading-section{
-	font-size: 28px;
-	color: black;
-    box-shadow: 0px 3px 6px #00000029;
-}
-
-//COVER BG
-.img{
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-}
-
-.login-wrap{
-	position: relative;
-	background: white;
-	border-radius: 10px;
-	-webkit-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
-	-moz-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
-	box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
-	h3{
-		font-weight: 700;
-		font-size: 20px;
-		color: black;
-	}
-    .dashed{
-        background: transparent;
-        border: 1px solid #CFCFCF;
-        border-radius: 5px;
-        border-bottom: 2px dashed;
-		color: #CFCFCF;
-        opacity: 1;
-    }
-	.icon{
-		width: 80px;
-		height: 80px;
-		background: black;
-		border-radius: 50%;
-		font-size: 30px;
-		margin: 0 auto;
-		margin-bottom: 10px;
-		span{
-			color: white;
+.login-grid{
+	display:flex;
+	justify-content:center;
+	align-items: center;	
+	.login-wrap{
+		position: relative;
+		background-image: url('fundoLogin.png');
+		background-size: 100% 100%;
+		// height: 60rem;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 50rem;
+		width: 50rem;
+		margin-left: 2rem;
+		h3{
+			font-weight: 700;
+			font-size: 20px;
+			color: black;
 		}
+		form{
+			margin-top: 5rem;
+		}
+		.dashed{
+			background: transparent;
+			border: 1px solid #CFCFCF;
+			border-radius: 5px;
+			border-bottom: 2px dashed;
+			color: #CFCFCF;
+			opacity: 1;
+			margin-left: 18%;
+			width: 50%;
+		}
+		.icon{
+			width: 80px;
+			height: 80px;
+			background: black;
+			border-radius: 50%;
+			font-size: 30px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			span{
+				color: white;
+			}
+		}
+		.actions{
+			margin-left: 42%;
+			margin-top: 5.5%;
+		}
+	}
+	.form-group{
+		margin-left: 18%;
+	}
+	.check{
+		margin-left: 18%;
+		margin-top: 12%;
+	}
+	
+}
+
+.login-logo{
+	display: flex;
+	justify-content: center;
+	margin-top: 4rem;
+	img{
+		box-shadow: 0 0 5px 2px #282a2d;
+		margin-bottom: 1em;
 	}
 }
 
 //FORM CONTROL
-.form-control {
+.form-control-login {
 	height: 48px;
 	background: rgba(0,0,0,.05);
 	color: black;
@@ -79,105 +86,7 @@
 	}
 }
 
-
-
-
-//CHECKBOX STYLE
-.checkbox-wrap {
-  display: block;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 500;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default checkbox */
-.checkbox-wrap input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: "\f0c8";
-  font-family: "FontAwesome";
-  position: absolute;
-  color:rgba(0,0,0,.1);
-  font-size: 20px;
-  margin-top: -4px;
-}
-
-/* Show the checkmark when checked */
-.checkbox-wrap{
-	input:checked ~ .checkmark:after {
-	  display: block;
-	  content: "\f14a";
-	  font-family: "FontAwesome";
-	  color: rgba(0,0,0,.2);
-	}
-}
-
-/* Style the checkmark/indicator */
-.checkbox-wrap .checkmark:after {
-}
-
-
-.checkbox-primary{
-  color: black;
-  input:checked ~ .checkmark:after {
-	  color: black;
-	}
-}
-
-
-//BUTTON
-.btn {
-	cursor: pointer;
-	box-shadow: none!important;
-	font-size: 15px;
-	&:hover, &:active, &:focus {
-		outline: none;
-	}
-	&.btn-primary {
-		background: black !important;
-		border: 1px solid black !important;
-		color: $white !important;
-		&:hover {
-			border: 1px solid black;
-			background: transparent;
-			color :black;
-		}
-		&.btn-outline-primary {
-			border: 1px solid black;
-			background: transparent;
-			color :black;
-			&:hover {
-				border: 1px solid transparent;
-				background: black;
-				color :$white;
-			}
-		}
-	}
-}
-
-.form-group{
+.form-group-login{
 	position: relative;
 	.submit{
 		position: absolute;
@@ -185,6 +94,12 @@
 		left: 0;
 		right: 0;
 		margin: 0 auto;
-		
 	}
+	label{
+		margin-left: 18%;
+	}
+}
+.container-login{
+	width: 100%;
+	height: 100%;
 }
