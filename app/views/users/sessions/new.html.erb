@@ -1,16 +1,16 @@
-<div class="container-login">
-  <div class="row login-logo">
+<div class="container">
+  <div class="login-logo">
     <img src="<%= image_url('Logo.svg') %>" >
   </div>
-  <div class="row login-grid">
-    <div class="col login-wrap">
+  <div class="login-grid">
+    <div class="login-wrap">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
         <div class="form-group-login">
-          <%= f.label :email %>
+          <%= f.label :email %><br>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control-login rounded-left dashed"%>
         </div>
-        <div class="form-group-login">
-          <%= f.label :password, "Senha" %>
+        <div class="form-group-login mt-2">
+          <%= f.label :password, "Senha" %><br>
           <%= f.password_field :password, autocomplete: "current-password", class:"form-control-login rounded-left dashed" %>
         </div>
         <% if devise_mapping.rememberable? %>
