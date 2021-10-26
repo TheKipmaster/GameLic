@@ -1,26 +1,31 @@
-<h2>Entrar</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="login-logo">
+    <img src="<%= image_url('Logo.png') %>" >
   </div>
-
-  <div class="field">
-    <%= f.label :password, "Senha" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me%>
-      <%= f.label :remember_me, "Manter-me conectado"  %>
+  <div class="login-grid">
+    <div class="login-wrap">
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|%>
+        <div class="form-group-login">
+          <%= f.label :email %><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control-login rounded-left dashed"%>
+        </div>
+        <div class="form-group-login mt-2">
+          <%= f.label :password, "Senha" %><br>
+          <%= f.password_field :password, autocomplete: "current-password", class:"form-control-login rounded-left dashed" %>
+        </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="check">
+            <%= f.check_box :remember_me, class:"checkbox-primary" %>
+            <%= f.label :remember_me, "  Manter-me conectado"  %>
+          </div>
+        <% end %>
+        <div class="actions">
+          <%= f.submit "Entrar" %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= render "users/shared/links" %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Entrar" %>
   </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</div>

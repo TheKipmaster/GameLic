@@ -224,7 +224,39 @@
 .h7 {
   font-size: 0.8rem;
 }
-
+.edit{
+  input[type="file"]{
+    display: none;
+    content: "" !important
+  }
+  .custom-file-upload{
+    background: transparent;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    box-shadow: 1;
+  }
+  .icon-fotos{
+    position: relative;
+    top: -3.5em;
+  }
+  .labels{
+    background: transparent;
+    border: 1px solid #CFCFCF;
+    border-radius: 5px;
+    border-bottom: 2px dashed;
+    color: #000000;
+    opacity: 1;
+    height: 4em;
+    font-size: 2rem;
+  }
+  .actions{
+    input{
+      background: transparent !important;
+      opacity: 1;
+    }
+  }
+}
 .avatar {
   height: 165x;
   width: 165px;
