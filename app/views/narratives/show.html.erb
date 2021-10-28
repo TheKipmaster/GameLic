@@ -57,7 +57,9 @@
                   <% end %>
                 <% end %>
               </div>
-              <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+              <% if can? :edit, @narrative %>
+                <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+              <% end %>
               <%= link_to 'Voltar', narratives_path %>
             </div>
           </div>
