@@ -5,9 +5,17 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-3">
             <div class="avatar">
-              <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100">
+              <% if @user.avatar.attached? %>
+                <%= image_tag(@user.avatar, class: "d-block w-100") %>
+              <% else %>
+                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100">
+              <% end %>
               <div>
-                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="avatarSub">
+                <% if @user.portrait.attached?  %>
+                  <%= image_tag(@user.portrait, class: "avatarSub") %>
+                <% else %>
+                  <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" class="avatarSub">
+                <% end %>
               </div>
             </div>
           </div>
@@ -42,56 +50,76 @@
                   </div>
                 </div>
                 <h5>Ficha do Personagem</h5>
-                <div class="pdf">
-                  <div class="action" id="orange">
-                    <h3>
-                      <img src="<%= image_url('Pdf.svg') %>" alt="">
-                    </h3>
-                    <span>Anexo PDF</span>
+                <% if @user.character_sheet.attached? %>
+                  <%= link_to url_for(@user.character_sheet), class: "pdf" do %>
+                    <div class="action" id="orange">
+                      <h3>
+                        <img src="<%= image_url('Pdf.svg') %>" alt="">
+                      </h3>
+                      <span>Anexo PDF</span>
+                    </div>
+                  <% end %>
+                <% else %>
+                  <div class="pdf">
+                    <div class="action" id="orange">
+                      <h3>
+                        <img src="<%= image_url('Pdf.svg') %>" alt="">
+                      </h3>
+                      <span>PDF não anexado</span>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               </div>
             </div>
           </div>
+
           <%#   POST   %>
           <div class="col-md-9 gedf-main">
-            <div class="card gedf-card post">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-10">
-                    <div class="user">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" />
-                      <div class="user-info">
-                        <h5>NOME DO ALUNO FULANO</h5>
-                        <small>Personagem Ciclano</small>
+            <% @user.posts.each do |post| %>
+              <div class="card gedf-card post">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-10">
+                      <div class="user">
+                        <% if @user.avatar.attached? %>
+                          <%= image_tag(@user.avatar) %>
+                        <% else %>
+                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="" />
+                        <% end %>
+                        <div class="user-info">
+                          <h5><%= @user.name %></h5>
+                          <small><%= @user.nickname %></small>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="text-muted h7 mb-2 text-right">
+                        <span class="time"><%= time_ago_in_words(post.created_at) %> ago</span>
                       </div>
                     </div>
                   </div>
-                  <div class="col-2">
-                    <div class="text-muted h7 mb-2 text-right">
-                      <span class="time">10 min ago</span>
+                  <div class="row">
+                    <div class="col">
+                      <p class="card-text" id="content">
+                        <%= sanitize post.body.to_html %>
+                      </p>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col">
-                    <p class="card-text" id="content">
-                      when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae nulla remeos ipsa.
-                    </p>
+                <div class="card-footer card-footer-profile">
+                  <div class="row">
+                    <div class="col links">
+                      <% post.files.each do |file| %>
+                        <%= link_to url_for(file) do %>
+                          <img src="<%= image_url('Youtube.svg') %>" alt="">
+                          <span><%= file.filename %></span>
+                        <% end %>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="card-footer card-footer-profile">
-                <div class="row">
-                  <div class="col links">
-                    <a href="#" >
-                      <img src="<%= image_url('Youtube.svg') %>" alt="">
-                      <span>Youtube</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% end %>
           </div>
         </div>
       </div>
