@@ -2,96 +2,116 @@
   <div class="row justify-content-md-center align-items-center mx-5">
     <div class="col-auto card rounded">
       <%= form_with(scope: :user, local: true, url: user_path(@user), method: :patch) do |form| %>
-      <% if @user.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-          <ul>
-            <% @user.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="row">
+          <div class="col mt-5 mb-4">
+            <h1 class="text-center">Editar Perfil</h1>
+          </div>
         </div>
-      <% end %>
-      <div class="row">
-        <div class="col mt-5 mb-4">
-          <h1 class="text-center">Editar Perfil</h1>
-        </div>
-      </div>
-      <div class="row mx-5">
-        <div class="col">
-          <div class="file-field">
-            <div class="mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid w-100" style="height: 17em;"
-                alt="example placeholder">
-            </div>
-            <div class="d-flex icon-fotos justify-content-end">
-                <label for="file-capa" class="custom-file-upload">
-                  <i class="fas fa-pencil-alt"></i>
-                </label>
-                <input id="file-capa" type="file">
+
+        <div class="row mx-5">
+          <div class="col">
+            <div class="file-field">
+              <div class="mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid w-100" style="height: 17em;"
+                  alt="example placeholder">
+              </div>
+              <div class="d-flex icon-fotos justify-content-end">
+                  <%= form.label :cover, class: "custom-file-upload" do %>
+                    <i class="fas fa-pencil-alt"></i>
+                  <% end %>
+                  <%= form.file_field :cover %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row mx-5">
-        <div class="col-4"> 
-            <h2>Foto de Perfil</h2>
-          <div class="file-field">
-            <div class="mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="rounded mx-auto d-block w-100" alt="...">
+
+        <div class="row mx-5">
+          <div class="col-4">
+              <h2>Foto de Perfil</h2>
+            <div class="file-field">
+              <div class="mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="rounded mx-auto d-block w-100" alt="...">
+              </div>
+              <div class="d-flex justify-content-end icon-fotos">
+                  <%= form.label :portrait, class: "custom-file-upload" do %>
+                    <i class="fas fa-pencil-alt"></i>
+                  <% end %>
+                  <%= form.file_field :portrait %>
+              </div>
             </div>
-            <div class="d-flex justify-content-end icon-fotos">
-                <label for="file-perfil" class="custom-file-upload">
-                  <i class="fas fa-pencil-alt"></i>
-                </label>
-                <input id="file-perfil" type="file">
+          </div>
+
+          <div class="col-8">
+            <div class="form-group">
+              <%= form.label :name, 'Nome Completo'%>
+              <%= form.text_field :name, class: "form-control labels rounded-left"%>
+            </div>
+            <div class="form-group">
+              <%= form.label :apelido, 'Nome do Personagem'%>
+              <%= form.text_field :nickname, class: "form-control labels rounded-left" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :instituicao, 'Instituição'%>
+              <%= form.text_field :institution, class: "form-control labels rounded-left" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :matricula, 'Matrícula'%>
+              <%= form.text_field :registration_number, class: "form-control labels rounded-left" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :idade, 'Idade'%>
+              <%= form.number_field :age, class: "form-control labels rounded-left" %>
             </div>
           </div>
         </div>
-        <div class="col-8">
-          <div class="form-group">
-            <%= form.label :name, 'Nome Completo'%>
-            <%= form.text_field :name, class: "form-control labels rounded-left"%>
+
+        <div class="row mx-5 text-center">
+          <div class="col-4">
+            <h2>Foto do Personagem</h2>
+            <div class="file-field">
+              <div class="mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                  class="rounded-circle z-depth-1-half avatar-pic w-50" alt="example placeholder avatar">
+              </div>
+              <div class="d-flex icon-fotos justify-content-end">
+                  <%= form.label :avatar, class: "custom-file-upload" do %>
+                    <i class="fas fa-pencil-alt"></i>
+                  <% end %>
+                  <%= form.file_field :avatar %>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <%= form.label :apelido, 'Nome do Personagem'%>
-            <%= form.text_field :nickname, class: "form-control labels rounded-left" %>
+
+          <div class="col-8 align-self-center">
+            <h2>Ficha do Personagem</h2>
+            <div class="file-field">
+              <div class="mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                  class="rounded w-25" alt="...">
+              </div>
+              <div class="d-flex justify-content-center" style="left: 5em;position: relative;top: -3em;">
+                  <%= form.label :character_sheet, class: "custom-file-upload" do %>
+                    <i class="fa fa-upload" aria-hidden="true"></i>
+                  <% end %>
+                  <%= form.file_field :character_sheet %>
+              </div>
+            </div>
           </div>
+
         </div>
-      </div>
-      <div class="row mx-5 text-center">
-        <div class="col-4">
-        <h2>Foto do Personagem</h2>
-          <div class="file-field">
-            <div class="mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                class="rounded-circle z-depth-1-half avatar-pic w-50" alt="example placeholder avatar">
-            </div>
-            <div class="d-flex icon-fotos justify-content-end">
-                <label for="file-personagem" class="custom-file-upload">
-                  <i class="fas fa-pencil-alt"></i>
-                </label>
-                <input id="file-personagem" type="file">
-            </div>
-          </div>
-        </div>
-        <div class="col-8 align-self-center"> 
-          <h2>Ficha do Personagem</h2>
-          <div class="file-field">
-            <div class="mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                class="rounded w-25" alt="...">
-            </div>
-            <div class="d-flex justify-content-center" style="left: 5em;position: relative;top: -3em;">
-                <label for="file-personagem" class="custom-file-upload">
-                  <i class="fa fa-upload" aria-hidden="true"></i>
-                </label>
-                <input id="file-personagem" type="file">
-            </div>
-          </div>
-        </div>
-      </div>
+
         <div class="actions text-center">
           <%= form.submit 'Salvar alterações' %>
         </div>

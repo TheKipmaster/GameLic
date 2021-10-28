@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one_attached :avatar # TODO: character_portrait?
   has_one_attached :portrait
   has_one_attached :character_sheet
+  has_one_attached :cover
 
   acts_as_messageable
 
@@ -20,12 +21,16 @@ class User < ApplicationRecord
     end
   end
 
-  # def name
-  #   return name
-  # end
-
   def mailboxer_email(object)
     email
+  end
+
+  def sing_up_complete?
+    if name != nil or institution != nil or registration_number != nil or nickname != nil or age != nil
+      false
+    else
+      true
+    end
   end
 
   def promote # @TODO: remover referencias para narrativas
