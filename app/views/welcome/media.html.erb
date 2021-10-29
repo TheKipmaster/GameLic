@@ -7,8 +7,11 @@
         </div>
 
         <div>
-          <% @narratives.each do |narrative| %>
-            <span><%= narrative.title %></span> <br>
+          <% @media.each_pair do |date, narratives| %>
+            <h2><%= date %></h2>
+            <% narratives.each do |narrative| %>
+              <span><%= narrative.title %></span> <br>
+            <% end %>
           <% end %>
         </div>
       </div>

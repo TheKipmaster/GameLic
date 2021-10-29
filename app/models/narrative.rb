@@ -24,7 +24,7 @@ class Narrative < ApplicationRecord
   end
 
   def self.archive
-    self.update_all(archived: true)
+    self.update_all(archived: true, archived_at: DateTime.now)
   end
 
   def full?

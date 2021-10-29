@@ -6,6 +6,16 @@ class WelcomeController < ApplicationController
   end
 
   def media
-    @narratives = Narrative.archived
+    semesters = Set[]
+    narratives = Narrative.archived
+    @media = {}
+
+    narratives.each do |narrative|
+      semesters.add(narrative.archived_at)
+    end
+
+    semesters.each do |time|
+      @media[time.strftime("%B/%Y").to_sym] = narratives.where(archived_at: time)
+    end
   end
 end
