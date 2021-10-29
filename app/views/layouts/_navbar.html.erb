@@ -5,10 +5,12 @@
     </a>
 
     <div class="site-actions">
-      <a href="<%= root_path %>" class="btn-navbar">
-        <img src="<%= image_url('Pergaminho.svg') %>" alt="">
-        <span>Minha Mesa</span>
-      </a>
+      <% if current_user.student? and current_user.narrative  %>
+        <a href="<%= narrative_path(current_user.narrative) %>" class="btn-navbar">
+          <img src="<%= image_url('Pergaminho.svg') %>" alt="">
+          <span>Minha Mesa</span>
+        </a>
+      <% end %>
       <a href="<%= narratives_path %>" class="btn-navbar">
         <img src="<%= image_url('Espada.svg') %>" alt="">
         <span>Campanhas</span>
@@ -17,10 +19,12 @@
         <img src="<%= image_url('Arquivos.svg') %>" alt="">
         <span>Fórum</span>
       </a>
-      <a href="/media" class="btn-navbar">
-        <img src="<%= image_url('Midia.svg') %>" alt="">
-        <span>Midioteca</span>
-      </a>
+      <% if can? :media, :welcome %>
+        <a href="/media" class="btn-navbar">
+          <img src="<%= image_url('Midia.svg') %>" alt="">
+          <span>Midioteca</span>
+        </a>
+      <% end %>
     </div>
 
     <div class="user-actions">
