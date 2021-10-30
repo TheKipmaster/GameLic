@@ -224,6 +224,11 @@
 .h7 {
   font-size: 0.8rem;
 }
+.mostraInput{
+  input[type="file"]{
+    display: flex !important
+  }
+}
 .edit{
   input[type="file"]{
     display: none;
