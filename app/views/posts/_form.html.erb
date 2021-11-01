@@ -1,33 +1,44 @@
-<div style="background-color: white">
-  <%= form_with(model: [narrative, post], local: true) do |form| %>
-    <% if post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: [narrative, post], local: true) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-        <ul>
-          <% post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-    <div class="field">
-      <%= form.label :body %>
-      <%= form.text_area :body %>
-    </div>
-
-    <div class="field">
-      <%= form.label :allow %>
-      <%= form.text_field :allow %>
-    </div>
-
-    <div class="field">
-      <%= form.file_field :files, multiple: true %>
-    </div>
-
-
-    <div class="actions">
-      <%= form.submit %>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
-</div>
+    <div class="row mx-5">
+      <div class="col-8">
+          <div class="form-group">
+            <%= form.label :body, 'Conteúdo: ' , :class => 'font-weight-bold' %>
+            <%= form.text_area :body , class:"form-control labels rounded-left"%>
+          </div>
+      </div>
+    </div>
+    <div class="row mx-5">
+        <div class="col-8">
+            <div class="form-group">
+              <%= form.label :allow , 'Permite que seja compartilhada? ', :class => 'font-weight-bold'%>
+              <%= form.text_field :allow , class:"form-control labels rounded-left"%>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-5">
+      <div class="col-8">
+        <div class="file-field">
+          <div class="d-flex mostraInput">
+              <%= form.file_field :files, multiple: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions text-center">
+      <%= form.submit 'Salvar Alterações' %>
+    </div>
+    <div class="actions text-center">
+      <%= link_to 'Voltar', @narrative %>
+    </div>
+<% end %>

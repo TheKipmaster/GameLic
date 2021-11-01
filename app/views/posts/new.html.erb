@@ -1,5 +1,12 @@
-<h1>New Post</h1>
-
-<%= render 'form', post: @post, narrative: @narrative %>
-
-<%= link_to 'Back', @narrative %>
+<div class="container edit">
+  <div class="row justify-content-md-center align-items-center mx-5">
+    <div class="card rounded w-100">
+     <div class="row">
+      <div class="col mt-5 mb-4">
+        <h1 class="text-center">Criar Post</h1>
+      </div>
+    </div>
+      <%= render 'form', post: @post, narrative: @narrative %>
+    </div>
+  </div>
+</div>
