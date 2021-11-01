@@ -5,7 +5,7 @@
       <div class="header-narr">
         <div
           class="narrative-header"
-          style="background-image: url(<%= @narrative.avatar.attached? ? rails_blob_url(@narrative.avatar) : image_url('chatMesa.svg') %>)"
+          style="background-image: url(<%= @narrative.cover.attached? ? rails_blob_url(@narrative.cover) : image_url('chatMesa.svg') %>)"
         >
           <h2><%= @narrative.title %></h2>
           <h3>Narrado por ~<%= @narrative.narrator.name %></h3>
@@ -16,27 +16,31 @@
           <div class="col-md-3">
             <div class="left">
               <div class="actions">
-                <%= link_to "/users/choose_narrative/#{@narrative.id}", method: :patch, class: "action" do %>
-                  <h3>
-                    <img src="<%= image_url('Pergaminho.svg') %>" alt="">
-                  </h3>
-                  <span>Inscrever-se <br>
-                    na mesa</span>
+
+                <% if not @narrative.open? %>
+                  <%= render partial: "choose", locals: { css_class: "closed" } %>
+                <% elsif @narrative.full? %>
+                  <%= render partial: "choose", locals: { css_class: "full" } %>
+                <% elsif current_user.student? and current_user.narrative == @narrative %>
+                  <%= render partial: "choose", locals: { css_class: "chosen" } %>
+                <% else %>
+                  <%= render partial: "choose", locals: { css_class: "" } %>
                 <% end %>
+
                 <div class="action">
                   <h3 class="font-weight-bold">
                     <%= @narrative.students.length %> / <%= @narrative.size %>
                   </h3>
                   <span>Inscritos</span>
                 </div>
-                <% if false %>
-                  <div class="action" id="blue">
-                    <h3>
-                      <img src="<%= image_url('videoCam.svg') %>" alt="">
-                    </h3>
-                    <span>Chamada de video</span>
-                  </div>
+
+                <%= link_to new_narrative_post_path(@narrative), class: "action" do %>
+                  <h3>
+                    <img src="<%= image_url('videoCam.svg') %>" alt="">
+                  </h3>
+                  <span>Adicionar Conteúdo</span>
                 <% end %>
+
                 <div class="action" id="blue">
                   <h3>
                     <img src="<%= image_url('chatMesa.svg') %>" alt="">
@@ -46,14 +50,16 @@
               </div>
               <div class="students">
                 <% @narrative.students.each do |student| %>
-                  <div class="student">
+                  <%= link_to user_path(student), class: "student" do %>
                     <img src="<%= image_url('iconStudent.svg') %>" alt="">
-                    <span class="name"><%= student.name %></span>
+                    <span class="name"><%= truncate(student.name, length: 19) %></span>
                     <span class="nickname"><%= student.nickname %></span>
-                  </div>
+                  <% end %>
                 <% end %>
               </div>
-              <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+              <% if can? :edit, @narrative %>
+                <%= link_to 'Editar', edit_narrative_path(@narrative) %> |
+              <% end %>
               <%= link_to 'Voltar', narratives_path %>
             </div>
           </div>
@@ -61,8 +67,22 @@
             <div class="right">
               <div class="narrative-content">
                 <h3>Sinopse da Mesa</h3>
-                <span><%= @narrative.description %></span>
+                <%= sanitize @narrative.description.to_html %>
               </div>
+
+              <% @narrative.posts.each do |post|  %>
+                <div class="narrative-content">
+                  <h3><%= post.user.name %></h3>
+                  <%= link_to 'Editar', edit_narrative_post_path(@narrative, post) %>
+                  <span><%= sanitize post.body.to_html %></span>
+                  <br>
+                  <span>
+                    <% post.files.each do |file| %>
+                      <br><%= link_to file.filename, rails_blob_path(file, disposition: "attachment") %> <%# url_for(file) %>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

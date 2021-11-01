@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  root to: 'welcome#index'
+  root to: 'welcome#home'
+  get 'media', to: 'welcome#media'
 
   resources :narratives do
-    patch :open_registration, on: :collection
+    resources :posts, only: [:new, :edit, :create, :update, :destroy]
+    collection do
+      patch :open_registration
+      patch :archive
+    end
+  end
+
+  resources :conversations do
+    resources :messages
   end
 
   devise_for :users, controllers: {
-    confirmations: 'confirmations',
+    confirmations: 'users/confirmations',
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }

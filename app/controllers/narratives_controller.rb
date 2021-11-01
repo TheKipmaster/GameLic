@@ -3,16 +3,22 @@ class NarrativesController < ApplicationController
   before_action :set_narrators, only: %i[ new edit create update ]
   load_and_authorize_resource
 
-  # GET /narratives or /narratives.json
-  def index
-    @narratives = Narrative.all
-    authorize! :read, Narrative # @TODO: why do I need this? "load_and_authorize_resource" should be enough
-  end
-
+  # PATCH /narratives/open_registration
   def open_registration
     Narrative.toggle_open
 
     redirect_back(fallback_location: narratives_path)
+  end
+
+  # PATCH /narratives/archive
+  def archive
+    Narrative.archive
+
+    redirect_back(fallback_location: narratives_path)
+  end
+
+  # GET /narratives or /narratives.json
+  def index
   end
 
   # GET /narratives/1 or /narratives/1.json
@@ -69,7 +75,7 @@ class NarrativesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_narrative
-      @narrative = Narrative.find(params[:id])
+      @narrative = Narrative.include_everything.find(params[:id])
     end
 
     def set_narrators
@@ -83,6 +89,6 @@ class NarrativesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def narrative_params
-      params.require(:narrative).permit(:title, :size, :description, :avatar, :user_id)
+      params.require(:narrative).permit(:title, :size, :description, :cover, :user_id)
     end
 end

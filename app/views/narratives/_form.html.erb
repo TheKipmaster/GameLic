@@ -1,42 +1,73 @@
-<%= form_with(model: narrative, local: true) do |form| %>
-  <% if narrative.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(narrative.errors.count, "error") %> prohibited this narrative from being saved:</h2>
+    <%= form_with(model: narrative, local: true) do |form| %>
+      <% if narrative.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(narrative.errors.count, "error") %> prohibited this narrative from being saved:</h2>
 
-      <ul>
-        <% narrative.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :título %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :tamanho %>
-    <%= form.number_field :size %>
-  </div>
-
-  <div class="field">
-    <%= form.label :descrição %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :avatar %>
-    <%= form.file_field :avatar, direct_upload: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :narrador %>
-    <%= form.select(:user_id, @narrators) %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+          <ul>
+            <% narrative.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>  
+      <div class="row">
+        <div class="col mt-5 mb-4">
+          <h1 class="text-center">Editar Perfil da Mesa</h1>
+        </div>
+      </div>
+      <div class="row mx-5">
+        <div class="col">
+          <div class="file-field">
+            <div class="mb-4">
+              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid w-100" style="height: 17em;"
+                alt="example placeholder">
+            </div>
+            <div class="d-flex icon-fotos justify-content-end">
+                <label for="file-capa" class="custom-file-upload">
+                  <i class="fas fa-pencil-alt"></i>
+                </label>
+                <input id="file-capa" type="file">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-5">
+        <div class="col-8">
+            <div class="form-group">
+              <%= form.label :título, 'Nome da Mesa: ' , :class => 'font-weight-bold' %>
+              <%= form.text_field :title, class:"form-control labels rounded-left"%>
+            </div>
+        </div>
+      </div>
+      <div class="row mx-5">
+          <div class="col-8">
+              <div class="form-group">
+                <%= form.label :narrador , 'Nome do narrador: ', :class => 'font-weight-bold'%>
+                <%= form.select(:user_id, @narrators, {include_blank: "Selecione o Narrador"}, { :class => 'form-control labels rounded-left' }) %>
+              </div>
+          </div>
+      </div>
+      <div class="row mx-5">
+          <div class="col-8">
+              <div class="form-group">
+                  <%= form.label :tamanho, 'Quantas vagas disponíveis: ', :class => 'font-weight-bold' %>
+                  <%= form.number_field :size, class:"form-control labels rounded-left" %>
+              </div>
+          </div>
+      </div>
+      <div class="row mx-5">
+          <div class="col-8">
+              <div class="form-group">
+                  <%= form.label :descrição, 'Sinopse da Mesa: ', :class => 'font-weight-bold'%>
+                  <%= form.text_area :description, class:"form-control labels rounded-left"%>
+              </div>
+          </div>
+      </div>
+      <div class="actions text-center">
+        <%= form.submit 'Salvar Alterações' %>
+      </div>
+      <div class="actions text-center">
+        <%= link_to 'Visualizar', @narrative %>   |
+        <%= link_to 'Voltar', narratives_path %>
+      </div>
+      <% end %>

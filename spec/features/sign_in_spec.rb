@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 feature "Signing in" do
   background do
     @user = User.create(email: "user@example.com", password: "caplin")

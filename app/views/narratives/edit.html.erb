@@ -1,6 +1,9 @@
-<h1>Editing Narrative</h1>
+<div class="container edit">
+  <div class="row justify-content-md-center align-items-center mx-5">
+    <div class="card rounded w-100">
+      <%= render 'form', narrative: @narrative %>
+    </div>
+  </div>
+</div>
 
-<%= render 'form', narrative: @narrative %>
 
-<%= link_to 'Visualizar', @narrative %> |
-<%= link_to 'Voltar', narratives_path %>

@@ -1,0 +1,24 @@
+<h1>Editar Participantes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <td>Integrante</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_recipients.each do |recipient| %>
+      <tr>
+        <td><%= recipient.name %></td>
+        <td><%= link_to "Remover", remove_recipient_conversation_path(@conversation, recipient), method: :patch %></td>
+      </tr>
+    <% end %>
+
+    <%= form_tag add_recipient_conversation_path(@conversation), method: :patch do %>
+      <tr>
+        <td><%= select_tag :user_id, options_from_collection_for_select(@candidate_recipients, :id, :name) %></td>
+        <td><%= submit_tag %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

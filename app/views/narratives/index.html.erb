@@ -7,6 +7,14 @@
           <h1>CAMPANHAS</h1>
           <% if can? :manage, Narrative %>
             <div class="links">
+              <%= link_to "Arquivar Narrativas", archive_narratives_path, method: :patch, data: { confirm: "Tem certeza? Todas as Narrativas serão arquivadas" } %>
+              <% if Narrative.first.nil? %>
+                <%# If no narratives present in database, then show no link %>
+              <% elsif Narrative.open? %>
+                <%= link_to 'Fechar Inscrições', open_registration_narratives_path, method: :patch %>
+              <% else %>
+                <%= link_to 'Abrir Inscrições', open_registration_narratives_path, method: :patch %>
+              <% end %>
               <a href="<%= users_path %>">
                 <img src="<%= image_url('Pergaminho.svg') %>" alt="">
                 <span>Lista de Inscritos</span>
@@ -20,19 +28,19 @@
         </div>
         <div class="cards">
           <% @narratives.each do |narrative| %>
-            <div class="card-narrative">
-              <a href="<%= narrative_path(narrative) %>" class="">
-                <div class="card-header card-header-narrative">
-                  <% if narrative.avatar.attached? %>
-                    <%= image_tag(narrative.avatar) %>
-                    <%# <% else %>
-                    <%# <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100"> %>
-                  <% end %>
-                </div>
-                <div class="card-body card-body-narrative">
-                  <h2 class="card-title card-title-narrative"><%= narrative.title %></h2>
-                  <p class="card-text card-text-narrative" id="text"><%= truncate(narrative.description, length: 130) %></p>
-                </a>
+            <a href="<%= narrative_path(narrative) %>" class="card-narrative">
+              <div class="card-header card-header-narrative">
+                <% if narrative.cover.attached? %>
+                  <%= image_tag(narrative.cover) %>
+                <% else %>
+                  <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block w-100">
+                <% end %>
+              </div>
+
+              <div class="card-body card-body-narrative">
+                <h2 class="card-title card-title-narrative"><%= narrative.title %></h2>
+                <p class="card-text card-text-narrative" id="text"><%= sanitize narrative.description.to_html[0..80] %></p>
+
                 <div class="footer-narrative">
                   <div class="narrative-card-footer">
                     <% if narrative.open %>
@@ -47,6 +55,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           <% end %>
         </div>
+      </div>
+    </div>
+  </div>
+</div>

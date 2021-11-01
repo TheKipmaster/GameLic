@@ -1,0 +1,127 @@
+.login-grid{
+	display:flex;
+	justify-content:center;
+	align-items: center;	
+	.login-wrap{
+		position: relative;
+		background-image: url('fundoLogin.png');
+		background-size: 100% 100%;
+		// height: 60rem;
+		background-repeat: no-repeat;
+		background-position: center center;
+		height: 50rem;
+		width: 50rem;
+		margin-left: 2rem;
+		h3{
+			font-weight: 700;
+			font-size: 20px;
+			color: black;
+		}
+		form{
+			margin-top: 5rem;
+		}
+		.dashed{
+			background: transparent;
+			border: 1px solid #CFCFCF;
+			border-radius: 5px;
+			border-bottom: 2px dashed #CFCFCF;
+			color: #000000;
+			opacity: 1;
+			margin-left: 18%;
+			width: 60%;
+			font-size: 2rem;
+		}
+		.icon{
+			width: 80px;
+			height: 80px;
+			background: black;
+			border-radius: 50%;
+			font-size: 30px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			span{
+				color: white;
+			}
+		}
+		.actions{
+			margin-left: 42%;
+			margin-top: 4.5%;
+		}
+	}
+	.form-group{
+		margin-left: 18%;
+	}
+	.check{
+		margin-left: 18%;
+		margin-top: 12%;
+	}
+	
+}
+.actions-cadastrar{
+	margin-left: 38%;
+	margin-top: 5.5%;
+	margin-bottom: 15%;
+}
+
+.login-logo{
+	display: flex;
+	justify-content: center;
+	margin-top: 4rem;
+	height: 10em;
+
+	img{
+		// box-shadow: 0 0 5px 2px #282a2d;
+		margin-bottom: 1em;
+
+	}
+}
+
+.create{
+	.login-wrap{
+		height: 80rem !important;
+	}
+	.form-group-login{
+		top:1em;
+	}
+	.actions-cadastrar{
+		margin-top: 13.5%;
+		margin-bottom: 25%;
+	}
+}
+
+//FORM CONTROL
+.form-control-login {
+	height: 48px;
+	background: rgba(0,0,0,.05);
+	color: black;
+	font-size: 16px;
+	box-shadow: none;
+	border: 1px solid transparent;
+	padding-left: 20px;
+	padding-right: 20px;
+	
+	&:focus, &:active {
+		outline: none !important;
+		box-shadow: none;
+		background: rgba(0,0,0,.07);
+		border-color: transparent;
+	}
+}
+
+.form-group-login{
+	position: relative;
+	.submit{
+		position: absolute;
+		top: 20px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+	}
+	label{
+		margin-left: 18%;
+	}
+}
+.container-login{
+	width: 100%;
+	height: 100%;
+}
