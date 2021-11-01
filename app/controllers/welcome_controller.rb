@@ -6,6 +6,8 @@ class WelcomeController < ApplicationController
   end
 
   def media
+    @narratives = Narrative.archived
+
     semesters = Set[]
     narratives = Narrative.archived
     @media = {}

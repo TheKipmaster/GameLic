@@ -12,7 +12,7 @@
           <div class="col-sm-9">
             <div class="row">
             <% @narratives.each do |narrative| %>
-              <div class="card mx-2 my-2 " style="width: 18rem; border-radius: 16px">
+              <a href="<%= narrative_path(narrative) %>" class="card mx-2 my-2 " style="width: 18rem; border-radius: 16px">
                 <% if narrative.cover.attached? %>
                   <%= image_tag(narrative.cover, class:"card-img-top px-4 py-2 w-100") %>
                 <% else %>
@@ -21,7 +21,7 @@
                 <div class="card-body text-center">
                   <h2><%= narrative.title %></h2>
                 </div>
-              </div>
+              </a>
             <% end %>
             </div>
           </div>

@@ -10,6 +10,7 @@ class Ability
 
     cannot :manage, :all
 
+    # @TODO: cant edit or post to archived narratives
     if user.narrator?
       can :manage, [Narrative, User, :welcome]
       cannot :choose_narrative, Narrative
