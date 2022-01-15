@@ -9,7 +9,7 @@
             <% end %>
           </ul>
         </div>
-      <% end %>  
+      <% end %>
       <div class="row">
         <div class="col mt-5 mb-4">
           <h1 class="text-center">Editar Perfil da Mesa</h1>
@@ -19,14 +19,18 @@
         <div class="col">
           <div class="file-field">
             <div class="mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid w-100" style="height: 17em;"
-                alt="example placeholder">
+              <%# @TODO: display current image dynamically %>
+              <img
+                src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg"
+                class="img-fluid w-100" style="height: 17em;"
+                alt="example placeholder"
+              >
             </div>
             <div class="d-flex icon-fotos justify-content-end">
-                <label for="file-capa" class="custom-file-upload">
+                <%= form.label :cover, class: "custom-file-upload" do %>
                   <i class="fas fa-pencil-alt"></i>
-                </label>
-                <input id="file-capa" type="file">
+                <% end %>
+                <%= form.file_field :cover, direct_upload: true %>
             </div>
           </div>
         </div>
